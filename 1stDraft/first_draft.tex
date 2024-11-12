@@ -18,7 +18,7 @@
 \begin{document}
 
 \title{Modeling Tumor Growth in Presence of Treatment and Immunological Response}
-\author{Rebecca, Henry Fetzer, Nephi S, Joseph Humpherys, Oscar J. Escobar}
+\author{Rebecca, Henry Fetzer, Nephi Suyama, Joseph Humpherys, Oscar J. Escobar}
 
 % Change the date to match the date you actually wrote this paper
 \date{4 October 2024} % or use \today
@@ -33,11 +33,23 @@ Place abstract here. The abstract summarizes in one paragraph the main question 
 \section{Background/Motivation}
 
 Mathematical modeling in biological processes is used to help researchers and doctors understand biological phenomena. 
-Specifically, it enables researchers to understand the complex biological systems and how these respond to signals or perturbations and how the systems evolve with time \cite{IntroMathOnc}
+Specifically, it enables researchers to understand the complex biological systems and how these respond to signals or perturbations and how the systems evolve with time \cite{IntroMathOnc}.
+
 
 Mathematical oncology is field of oncology, the study of cancer, that employs math to study cancer and its behavior.
 In the words of Dr. Rockne and MD Scott, ``it [serves] as a bridge between...the biologist, and the practicing clinician (2019)."
-Some of the most recent and important reasons for math modeling in oncology is to understand and model the characteristics and growth of cancer. Moreover, it seeks also to understand and model the relationship between cancer and the immune system and/or its response to treatment or resistance to it. Lastly, one of the biggest goal is to use this modeling to then develop more personable treatment to individuals facing the plight of cancer. 
+Some of the most recent and important reasons for math modeling in oncology is to understand and model the characteristics and growth of cancer.
+Moreover, it seeks also to understand and model the relationship between cancer and the immune system and/or its response to treatment or resistance to it.
+Lastly, one of the biggest goal is to use this modeling to then develop more personable treatment to individuals facing the plight of cancer.
+
+Tumor growth modeling is a well researched area of mathematical oncology.
+Its main purpose is to model tumor growth without any intervention as well as growth in response to external factors such as immunological response or treatment. 
+In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden}\footnote{See the Appendix for a definition.}, as a function of time $t$.
+The models range from simple ODEs such as linear growth, logistic growth, to more complicated models employing stochastic differential equations and algebraic differential equations. 
+
+One of the more popularly used models is called the \textit{Gompertz} model.
+The model is popular for its sigmoidal shape and approximation
+
 
 
 
@@ -75,6 +87,17 @@ Discuss the appropriateness of the techniques/methods you employed in modeling. 
 
 
 This part should all be done before you get to \emph{page 11}.  The bibliography can spill on to page 11, but we won't read text that goes past page 10.
+
+\section*{Appendix}
+
+\subsection*{Definitions}
+The following definitions are derived from the National Cancer Institute
+\begin{itemize}
+	\item Cancer:  TODO
+	\item Tumor: an abnormal growth of cells in the body. A tumor is either \textit{benign} or \textit{malignant}. A benign tumor is a tumor that is not cancer whereas a malignant tumor is a cancerous tumor and has the potential to spread.
+	\item Tumor burden: the size of a tumor or number cancer cells. This is the total amount of cancer found in the body. 
+
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
