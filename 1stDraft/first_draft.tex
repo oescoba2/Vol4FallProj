@@ -36,18 +36,26 @@ Lastly, one of the biggest goal is to use this modeling to then develop more per
 
 Tumor growth modeling is a well researched area of mathematical oncology.
 Its main purpose is to model tumor growth without any intervention as well as growth in response to external factors such as immunological response or treatment. 
-In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden} (see \ref{appendix: defs} for definitions), as a function of time $t$.
-The models range from simple ODEs such as linear growth, logistic growth, to more complicated models employing stochastic differential equations and algebraic differential equations. 
+In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden}, denoted $T$, (see \ref{appendix: defs} for definitions), as a function of time $t$.
+The models range from simple ODEs such as linear growth, logistic growth, to more complicated models employing stochastic differential equations and algebraic differential equations (which would be outside the scope of material learned in Vol 4 for analysis). 
 
 The more commonly used models due to their simplicity are linear, exponential, and logistic models (see \ref{appendix: models} for equations).
 However, these do not accurately reflect the full growth of the model as time increases.
-In particular, the exponential model \eqref{eq: exp} is characterized by an infinite growth as T increases which does not reflect the fact that a tumor can have a maximum size, even when considering a death rate.
+In particular, the exponential model \eqref{eq: exp} is characterized by an infinite growth as $t$ increases which does not reflect the fact that a tumor can have a maximum size, even when considering a death rate.
 Moreover, the logistic model \eqref{eq: logistic} converges too fast to the max size, $T_{\max}$, a tumor can be \cite{Steb23}.
 
+The \textit{Gompertz} model is a logistic model that was created to describe the growth of human mortality in 1825 by Benjamin Gompertz.
+In particular, the ODE is given by
+\begin{equation}
+	\frac{\diff T(t)}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) \label{eq: gompertz},
+\end{equation}
+where $k_g$ is a growth constant of the tumor, $T$ is the total number of cancer cells, and $t$ is days.
+The solutions to the ODE are of sigmoidal nature.
+Like the logistic growth model \eqref{eq: logistic}, the Gompertz model starts off with a quasi-exponential growth at the beginning that is short lived.
+However, unlike the logistic model, the Gompertz model slowly converges to the carrying capacity of that a tumor can have with available nutrients.
+That is, the Gompertz model slows down first and more significantly than a logistic \cite{Steb23}.
 
-
-
-
+TODO Add graph showing the different models
 
 %\begin{figure}[htb]
 %\begin{center} %Put your images in a figure like this
@@ -91,7 +99,7 @@ The following definitions are derived from the National Cancer Institute
 			\item Adjuvent Chemotherapy: Chemotherapy administered after primary tumor treatment is administered. Its intent is to lower the risk of the cancer returning.
 		\end{itemize}
 	\item Cancer:  a term for diseases in which abnormal cells divide without control and can invade nearby tissues
-	\item Tumor: an abnormal mass of tissue that forms when cells grow and divide more than they should or do not die when they should. Tumors may be \textit{benign} (not cancer) or \textit{malignant} (cancer).
+	\item Tumor: an abnormal mass of tissue that forms when cells grow and divide more than they should or do not die when they should. Tumors may be \textit{benign} (not cancer) or \textit{malignant} (cancer). For this project, defined the tumor burden as the number of cancer cells in the body.
 	\item Tumor burden: the size of a tumor or number cancer cells. This is the total amount of cancer found in the body. 
 \end{itemize}
 
