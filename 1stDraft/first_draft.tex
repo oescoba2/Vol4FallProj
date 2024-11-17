@@ -6,23 +6,19 @@
 
 
 \usepackage{graphicx}
-\usepackage{amssymb,amsmath,amsthm, cite}
-\usepackage{placeins} %enables \FloatBarrier, which prevents figures and tables from going below it.
+\usepackage{amssymb, amsmath, amsthm, cite}
+\usepackage{places} %enables \FloatBarrier, which prevents figures and tables from going below it.
 \usepackage{hyperref} %makes cross references into hyperlinks. 
 
- 
+ \input{commands}
 
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
+\title{The Affect of Chemotherapy and Immune System Response on Breast Cancer Growth}
+\author{Rebecca Gee, Henry Fetzer, Nephi Suyama, Joseph Humpherys, Oscar J. Escobar}
+\date{October 29 2024} % or use \today
 
 \begin{document}
-
-\title{Modeling Tumor Growth in Presence of Treatment and Immunological Response}
-\author{Rebecca Gee, Henry Fetzer, Nephi Suyama, Joseph Humpherys, Oscar J. Escobar}
-
-% Change the date to match the date you actually wrote this paper
-\date{4 October 2024} % or use \today
-
 \maketitle % this actually makes the title
 
 \begin{abstract}
@@ -32,30 +28,26 @@ Place abstract here. The abstract summarizes in one paragraph the main question 
 %% First Section
 \section{Background/Motivation}
 
-Mathematical modeling in biological processes is used to help researchers and doctors understand biological phenomena. 
-Specifically, it enables researchers to understand the complex biological systems and how these respond to signals or perturbations and how the systems evolve with time \cite{IntroMathOnc}.
-
-
 Mathematical oncology is field of oncology, the study of cancer, that employs math to study cancer and its behavior.
 In the words of Dr. Rockne and MD Scott, ``it [serves] as a bridge between...the biologist, and the practicing clinician (2019)."
 Some of the most recent and important reasons for math modeling in oncology is to understand and model the characteristics and growth of cancer.
 Moreover, it seeks also to understand and model the relationship between cancer and the immune system and/or its response to treatment or resistance to it.
-Lastly, one of the biggest goal is to use this modeling to then develop more personable treatment to individuals facing the plight of cancer.
+Lastly, one of the biggest goal is to use this modeling to then develop more personable treatment to individuals facing the plight of cancer \cite{YinMoes}.
 
 Tumor growth modeling is a well researched area of mathematical oncology.
 Its main purpose is to model tumor growth without any intervention as well as growth in response to external factors such as immunological response or treatment. 
-In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden}\footnote{See the Appendix for a definition.}, as a function of time $t$.
+In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden} (see \ref{appendix: defs} for definitions), as a function of time $t$.
 The models range from simple ODEs such as linear growth, logistic growth, to more complicated models employing stochastic differential equations and algebraic differential equations. 
 
-One of the more popularly used models is called the \textit{Gompertz} model.
-The model is popular for its sigmoidal shape and approximation
+The more commonly used models due to their simplicity are linear, exponential, and logistic models (see \ref{appendix: models} for equations).
+However, these do not accurately reflect the full growth of the model as time increases.
+In particular, the exponential model \eqref{eq: exp} is characterized by an infinite growth as T increases which does not reflect the fact that a tumor can have a maximum size, even when considering a death rate.
+Moreover, the logistic model \eqref{eq: logistic} converges too fast to the max size, $T_{\max}$, a tumor can be \cite{Steb23}.
 
 
 
 
 
-
-Also reference articles and sources \cite{Vandermeersch} that are relevant or that you used when learning and/or thinking about your project.
 
 %\begin{figure}[htb]
 %\begin{center} %Put your images in a figure like this
@@ -88,14 +80,40 @@ Discuss the appropriateness of the techniques/methods you employed in modeling. 
 
 This part should all be done before you get to \emph{page 11}.  The bibliography can spill on to page 11, but we won't read text that goes past page 10.
 
-\section*{Appendix}
-
-\subsection*{Definitions}
+\appendix
+\section{Definitions}
+\label{appendix: defs}
 The following definitions are derived from the National Cancer Institute
 \begin{itemize}
-	\item Cancer:  TODO
-	\item Tumor: an abnormal growth of cells in the body. A tumor is either \textit{benign} or \textit{malignant}. A benign tumor is a tumor that is not cancer whereas a malignant tumor is a cancerous tumor and has the potential to spread.
+	\item Chemotherapy: a cancer treatment where drugs are used to kill cancer cells or stop them from dividing
+		\begin{itemize}
+			\item Neoadjuvent Chemotherapy: chemotherapy administered before the primary treatment of the tumor is performed. Typically, surgery is the primary treatment. Its main goal is to shrink the tumor so that it is easier to remove.
+			\item Adjuvent Chemotherapy: Chemotherapy administered after primary tumor treatment is administered. Its intent is to lower the risk of the cancer returning.
+		\end{itemize}
+	\item Cancer:  a term for diseases in which abnormal cells divide without control and can invade nearby tissues
+	\item Tumor: an abnormal mass of tissue that forms when cells grow and divide more than they should or do not die when they should. Tumors may be \textit{benign} (not cancer) or \textit{malignant} (cancer).
 	\item Tumor burden: the size of a tumor or number cancer cells. This is the total amount of cancer found in the body. 
+\end{itemize}
+
+\section{Models}
+\label{appendix: models}
+\begin{itemize}
+	\item Linear growth: 
+		\begin{equation}
+			\frac{\diff T}{\diff t} = k,
+			\label{eq: lin}
+		\end{equation} 
+		where $k$ is the growth rate
+	\item Exponential Growth:
+		\begin{equation}
+			\frac{\diff T}{\diff t} = kT \label{eq: exp}
+		\end{equation} 
+	 or with a death rate constant of $d$, $\frac{\diff T}{\diff t} = (k-d)T$
+	\item Logistic Growth: 
+		\begin{equation} 
+			\frac{\diff T}{\diff t} = kT \bigl(1- \frac{T}{T_{\max}}\bigr)\label{eq: logistic},
+		\end{equation}
+		where $T_{\max}$ is the max size a tumor can be, which is equivalent to the carrying capacity.
 
 \end{itemize}
 
@@ -103,10 +121,10 @@ The following definitions are derived from the National Cancer Institute
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography below
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\FloatBarrier % Keep the figures from being put after the bibliography
+%\FloatBarrier % Keep the figures from being put after the bibliography
 \newpage
 %% If using bibtex, leave this uncommented
-\bibliography{references} %if using bibtex, call your bibtex file refs.bib
+\bibliography{refs.bib} %if using bibtex, call your bibtex file refs.bib
 \bibliographystyle{alpha}
 
 %% If not using bibtex, comment out the previous two lines and uncomment those below
