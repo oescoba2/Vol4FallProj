@@ -1,16 +1,12 @@
-%%
-%%                  TEMPLATE for Math 436 project report
-%%
 \documentclass[11pt]{amsart}
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
 
 
 \usepackage{graphicx}
 \usepackage{amssymb, amsmath, amsthm, cite}
-\usepackage{places} %enables \FloatBarrier, which prevents figures and tables from going below it.
-\usepackage{hyperref} %makes cross references into hyperlinks. 
-
- \input{commands}
+%\usepackage{places} %enables \FloatBarrier, which prevents figures and tables from going below it.
+%\usepackage{hyperref} %makes cross references into hyperlinks. 
+\input{commands}
 
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
@@ -29,7 +25,7 @@ Place abstract here. The abstract summarizes in one paragraph the main question 
 \section{Background/Motivation}
 
 Mathematical oncology is field of oncology, the study of cancer, that employs math to study cancer and its behavior.
-In the words of Dr. Rockne and MD Scott, ``it [serves] as a bridge between...the biologist, and the practicing clinician (2019)."
+In the words of Dr. Rockne and MD Scott, ``it [serves] as a bridge between $\ldots$ the biologist, and the practicing clinician (2019)."
 Some of the most recent and important reasons for math modeling in oncology is to understand and model the characteristics and growth of cancer.
 Moreover, it seeks also to understand and model the relationship between cancer and the immune system and/or its response to treatment or resistance to it.
 
@@ -37,13 +33,13 @@ Tumor growth modeling is a well researched area of mathematical oncology.
 Its main purpose is to model tumor growth without any intervention as well as growth in response to external factors such as immunological response or treatment. 
 In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden}, denoted $T$, (see \ref{appendix: defs} for definitions), as a function of time $t$.
 The models range from simple ODEs such as linear growth, logistic growth, to more complicated models employing stochastic differential equations and algebraic differential equations (which would be outside the scope of material learned in Vol 4 for analysis). 
-The main hope is to be able to use these models to develop more personable treatment to individuals facing the plight of cancer \cite{YinMoes}.
+The main hope is to be able to use these models to develop more personable treatment to individuals facing the plight of cancer\ \cite{YinMoes2019}.
 
-The more commonly used models due to their simplicity are linear, exponential, and logistic models (see \ref{appendix: models} for equations).
+The more commonly used models due to their simplicity are linear, exponential, and logistic models (see\ \ref{appendix: models} for equations).
 However, these do not accurately reflect the full and overall growth of observed cancers with the exception of a few cancer scenarios.
 That is, they fail to generalize to the dynamics a cancer will exhibit: primarily that it has slow exponential rate and a maximal size.
-In particular, the exponential model \eqref{eq: exp} is characterized by an infinite growth as $t$ increases which does not reflect the fact that a tumor can have a maximum size, even when considering a death rate.
-Moreover, the logistic model \eqref{eq: logistic} converges too fast to the max size, $T_{\max}$, a tumor can be \cite{Steb23}.
+In particular, the exponential model\ \eqref{eq: exp} is characterized by an infinite growth as $t$ increases which does not reflect the fact that a tumor can have a maximum size, even when considering a death rate.
+Moreover, the logistic model\ \eqref{eq: logistic} converges too fast to the max size, $T_{\max}$, a tumor can be\ \cite{Steb23}.
 As such, a need for a model that can firstly exhibit a slow exponential rate and then a slow convergence to the carrying capacity is preferred to others that only exhibit one of these two characteristics.
 
 When it comes to treatment, most cancers typically use a combination for surgery, chemotherapy, and radiation therapy for treatment.
@@ -57,10 +53,10 @@ The tumor-chemotherapy models most often only seek to understand the behavior of
 
 On the other hand, the immune system naturally patrols the body in search of foreign bodies to kill and prevent diseases.
 This patrolling involves not just for foreign bacteria but also abnormal cells such as cancer cells. 
-The modeling for tumor-immunological response typically look at relationship between NK and CB8$^+$ (see \ref{appendix: defs})
-
-
+The modeling for tumor-immunological response typically look at relationship between NK and CB8$^+$ (see\ \ref{appendix: defs})
 TODO Add graph showing the different models
+
+THIS IS A TEST TO SEE IF BRANCHING WORKS
 
 Thus, our focus is to model the growth of a HER2 positive breast cancer in relation to immunological system response of the Nk and CB cells and under neoadjuvent (see \ref{appendix: defs}) chemotheraphy.
 
