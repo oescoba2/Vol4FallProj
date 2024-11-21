@@ -97,6 +97,10 @@ Thus, our focus is to model the growth of a HER2 positive breast cancer in relat
 %% Second Section 
 \section{Modeling}
 
+%% Finite Difference methods, feel free to edit or place where you would like --Rebecca
+In solving the original Gompertz model, finite difference methods were used because of their simplicity yet relative accuracy. The local truncation error for Forward Euler can be found as follows $\tau_i = |T’(t_i) - \frac{T(t_i + h) - T(t_i)}{h}|$  where $T(t_i)$ is the actual solution at time $i$. Using Taylor Series, we can expand this to $|T’(t_i) - \frac{T(t_i) + hT’(t_i) + h^2T’’(t_i) + h^3T’’’(t_i) + O(h^4) - T(t_i)}{h}|$ which simplifies to $|-hT’’(t_i) - h^2T’’’(t_i) + O(h^3)| = O(h)$. So although quick to code and compute, there is a relatively large error term. 
+%% End Finite Difference methods
+
 The \textit{Gompertz} model is a logistic model that was created to describe the growth of human mortality in 1825 by Benjamin Gompertz.
 In particular, the ODE is given by
 \begin{equation}
