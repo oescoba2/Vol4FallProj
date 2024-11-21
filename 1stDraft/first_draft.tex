@@ -53,7 +53,10 @@ The tumor-chemotherapy models most often only seek to understand the behavior of
 
 On the other hand, the immune system naturally patrols the body in search of foreign bodies to kill and prevent diseases.
 This patrolling involves not just for foreign bacteria but also abnormal cells such as cancer cells. 
-The modeling for tumor-immunological response typically look at relationship between NK and CB8$^+$ (see\ \ref{appendix: defs})
+The modeling for tumor-immunological response typically look at relationship between natural killer cells (NK) and cytotoxic T-cells (CD8+)$^+$ (see\ \ref{appendix: defs}) and how they affect tumor growth. The NK cells are Although there are many other cells which contribute to an immune response, NK cells and CD8 cells are the only ones which directly kill the cancer cells in breast cancers \cite{Amens21}. The CD8+ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8+, and cancer cells. 
+Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun. Because of the immunocomprimising effects of radiation and chemotherapy, the body's ability to fight tumors naturally will decrease, leading to interesting dynamics of the cell populations.
+
+
 TODO Add graph showing the different models
 
 THIS IS A TEST TO SEE IF BRANCHING WORKS
