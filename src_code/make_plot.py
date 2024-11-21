@@ -7,8 +7,8 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
          chemo_line_alpha:float=1, chemo_linewidth:float=0.8,
          title:str="Growth Model", xlabel:str='$t$ (Days)', ylabel:str='Number of Cells', 
          normal_plot:bool=True, loglog:bool=False, semilogy:bool=False,
-         plot_all:bool=False, sol:ArrayLike=[], save:bool=False, 
-         fig_name:str='image.pdf') -> None:
+         semilogx:bool=False, plot_all:bool=False, sol:ArrayLike=[], save:bool=False, 
+         fig_name:str='./images/image.pdf') -> None:
     """This functions accepts data and other parameters to make a plot
     showing the relationship between the t_vals (time values) and 
     sol_vals (the solution values for each time value). It can make a 
@@ -37,15 +37,18 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
         - normal_plot (bool): whether to plot all the data in a normal plot.
                               Defaulted to True.
         - loglog (bool): whether to plot all the data in a loglog plot. Defa-
-                         ulted to False.
+                         ulted to False. If you want either x or y (not both)
+                         use semilogy or semilogx boolean.
         - semilogy (bool): whether to plot the y-axis data in logscale and 
                            x-axis data as normal. Defaulted to False.
+        - semilogx (bool): whether to plot the x-axis data in logscale and
+                           y-axis data as normal. Defaulted to False.
         - plot_all (bool): whether to plot all of the data
         - sol (ArrayLike): the scipy.integrate Bunch object containing all
                            the arrays of the ODE system
         - save (bool): whether to save the image to a pdf. Defaulted to False.
         - fig_name (str): the name of the saved pdf file containing the image.
-                          Defaulted to 'image.pdf'.
+                          Defaulted to './images/image.pdf'.
 
     Returns:
         - None
@@ -65,12 +68,20 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
     if loglog:
         normal_plot = False
         semilogy = False
+        semilogx = False
+
     elif semilogy:
         normal_plot = False
         loglog = False
+        semilogx = False
+
+    elif semilogx:
+        normal_plot = False
+        loglog = False
+        semilogy = False
 
     # Plot data in normal plot
-    if normal_plot and not loglog and not semilogy:
+    if normal_plot:
 
         if not plot_all:
             ax.plot(t_vals, sol_vals, color=line_color, label='Population of Cells')
@@ -115,8 +126,8 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
 
             plt.show()
 
-    # Plot data in loglog
-    elif loglog and not normal_plot and not semilogy:
+    # Plot all data in loglog
+    elif loglog:
             
         if not plot_all:
             ax.loglog(t_vals, sol_vals, color=line_color, label='Population of Cells')
@@ -161,8 +172,8 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
 
             plt.show()
 
-    # Plot data in semilogy
-    elif semilogy and not loglog and not normal_plot:
+    # Plot only the y-data in logscale
+    elif semilogy:
 
         if not plot_all:
             ax.semilogy(t_vals, sol_vals, color=line_color, label='Population of Cells')
@@ -190,6 +201,50 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.semilogy(t_vals, tumor/tot_cells, color='blue', label='Tumor')
             ax.semilogy(t_vals, NK/tot_cells, color='orange', label='NK')
             ax.semilogy(t_vals, CB8/tot_cells, color='green', label='CB8$^+$')
+            for i, chemo_day in enumerate(chemo_days):
+                if i==0:
+                    ax.axvline(x=chemo_day, alpha=chemo_line_alpha, linewidth=chemo_linewidth, linestyle ="--", color=chemo_line_color, label='Day of Chemo Dosage')
+                else:
+                    ax.axvline(x=chemo_day, alpha=chemo_line_alpha, linewidth=chemo_linewidth, linestyle ="--", color=chemo_line_color)
+
+            # Plot stuff
+            ax.set_xlabel(xlabel)
+            ax.set_ylabel(ylabel)
+            ax.set_title(title)
+            ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
+            plt.show()
+
+    # Plot only the x-data in a logscale
+    elif semilogx:
+        if not plot_all:
+            ax.semilogx(t_vals, sol_vals, color=line_color, label='Population of Cells')
+            for i, chemo_day in enumerate(chemo_days):
+                if i==0:
+                    ax.axvline(x=chemo_day, alpha=chemo_line_alpha, linewidth=chemo_linewidth, linestyle ="--", color=chemo_line_color, label='Day of Chemo Dosage')
+                else:
+                    ax.axvline(x=chemo_day, alpha=chemo_line_alpha, linewidth=chemo_linewidth, linestyle ="--", color=chemo_line_color)
+
+            # Plot stuff
+            ax.set_xlabel(xlabel)
+            ax.set_ylabel(ylabel)
+            ax.set_title(title)
+            ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
+
+            plt.show()
+
+        else:
+            tumor, NK, CB8 = sol.y[0], sol.y[1], sol.y[2]
+            tot_cells = tumor + NK + CB8
+            t_vals = sol.t
+            ax.semilogx(t_vals, tumor/tot_cells, color='blue', label='Tumor')
+            ax.semilogx(t_vals, NK/tot_cells, color='orange', label='NK')
+            ax.semilogx(t_vals, CB8/tot_cells, color='green', label='CB8$^+$')
             for i, chemo_day in enumerate(chemo_days):
                 if i==0:
                     ax.axvline(x=chemo_day, alpha=chemo_line_alpha, linewidth=chemo_linewidth, linestyle ="--", color=chemo_line_color, label='Day of Chemo Dosage')
