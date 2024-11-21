@@ -71,15 +71,8 @@ That is, they do not look at the specific immune cells interacting with the canc
 But as mentioned by de Pillis et. al, ``in some applications, it is not sufficient to represent the immune response with a single homogeneous population of
 effector killer cells\ \cite{dePillis2014461}."
 
-Moreover, 
-
-
-
-The modeling for tumor-immunological response typically look at relationship between NK and CB8$^+$ (see\ \ref{appendix: defs})
 
 TODO Add graph showing the different models
-
-THIS IS A TEST TO SEE IF BRANCHING WORKS
 
 Thus, our focus is to model the growth of a HER2 positive breast cancer in relation to immunological system response of the Nk and CB cells and under neoadjuvent (see \ref{appendix: defs}) chemotheraphy.
 
@@ -126,6 +119,23 @@ Adding \eqref{eq: chemo} to our growth in \eqref{eq: gompertz} gives
 	\frac{\diff T(t)}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu c(t) =k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu e^{-\gamma t} \label{eq: gompertz-chemo}.
 \end{equation}
 For our purposes, we chose to go with a chemotherapy treatment plan of one dose every two weeks for a total of 14 doses. 
+
+
+
+The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of NK and CD8+ cells. This results in the following system of equations.
+
+\begin{equation} \label{eq1}
+\frac{dT}{dt} = aT(1-bT) - cNT - D 
+\end{equation}
+\begin{equation} \label{eq2}
+\frac{dN}{dt} = \sigma - fN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t}
+\end{equation}
+\begin{equation} \label{eq3}
+\frac{dL}{dt} = - mL +\frac{jD^2}{k + D^2}L - qLT + rNT
+\end{equation}
+\begin{equation} \label{eq4}
+D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
+\end{equation}
 
 
 
