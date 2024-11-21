@@ -7,7 +7,8 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
          chemo_line_alpha:float=1, chemo_linewidth:float=0.8,
          title:str="Growth Model", xlabel:str='$t$ (Days)', ylabel:str='Number of Cells', 
          normal_plot:bool=True, loglog:bool=False, semilogy:bool=False,
-         plot_all:bool=False, sol:ArrayLike=[]) -> None:
+         plot_all:bool=False, sol:ArrayLike=[], save:bool=False, 
+         fig_name:str='image.pdf') -> None:
     """This functions accepts data and other parameters to make a plot
     showing the relationship between the t_vals (time values) and 
     sol_vals (the solution values for each time value). It can make a 
@@ -42,6 +43,9 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
         - plot_all (bool): whether to plot all of the data
         - sol (ArrayLike): the scipy.integrate Bunch object containing all
                            the arrays of the ODE system
+        - save (bool): whether to save the image to a pdf. Defaulted to False.
+        - fig_name (str): the name of the saved pdf file containing the image.
+                          Defaulted to 'image.pdf'.
 
     Returns:
         - None
@@ -81,6 +85,10 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.set_ylabel(ylabel)
             ax.set_title(title)
             ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
+                
             plt.show()
 
         else:
@@ -101,9 +109,12 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.set_ylabel(ylabel)
             ax.set_title(title)
             ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
+
             plt.show()
 
-    
     # Plot data in loglog
     elif loglog and not normal_plot and not semilogy:
             
@@ -120,6 +131,10 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.set_ylabel(ylabel)
             ax.set_title(title)
             ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
+
             plt.show()
 
         else:
@@ -140,6 +155,10 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.set_ylabel(ylabel)
             ax.set_title(title)
             ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
+
             plt.show()
 
     # Plot data in semilogy
@@ -158,8 +177,11 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.set_ylabel(ylabel)
             ax.set_title(title)
             ax.legend()
-            plt.show()
 
+            if save:
+                plt.savefig(fig_name, format='pdf')
+
+            plt.show()
 
         else:
             tumor, NK, CB8 = sol.y[0], sol.y[1], sol.y[2]
@@ -179,6 +201,9 @@ def plot(t_vals:ArrayLike=[], sol_vals:ArrayLike=[], chemo_days:List=[],
             ax.set_ylabel(ylabel)
             ax.set_title(title)
             ax.legend()
+
+            if save:
+                plt.savefig(fig_name, format='pdf')
             plt.show()
     
     else:
