@@ -100,6 +100,7 @@ In solving the original Gompertz model, finite difference methods were used beca
 \begin{figure}[htb]
 \begin{center} %Put your images in a figure like this
 \includegraphics[width=\textwidth]{./images/logistic.pdf} 
+\vspace*{-50mm}
 \end{center}
 \caption{Tumor Burden for various growth functions}
 \label{fig:growth} % for automatic cross referencing
@@ -180,6 +181,9 @@ D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \end{equation}
 
 The constants and form of the equation should be familiar, as they are taken directly from the above equations. 
+The fully integrated cancer model with both chemotherapy and immune cells predicts unreasonable results for chemotherapy without additional adjustments. For reasonable initial tumor sizes, one or two rounds of chemotherapy almost immediately kill the tumor. In practice, patients undergo 5-8 rounds of chemotherapy on average before showing signs of remission. Such problematic behavior is likely a result of the immune model, which as presented in a previous paper does not generalize well past 30 days. Thus, we tweaked our initial full model to produce qualitatively sound results.
+
+In order to fix the full tumor growth model qualitatively, we introduced a term in the differential equations for both CD8 cells and natural killer cells. Scientific papers have produced different conclusions on whether chemotherapy inhibits CD8 and natural killer cells, but we chose to incorporate a term which inhibits CD8 and natural killer cells in proportion to their interactions with the chemotherapy drug. We altered this new parameter until simulations prediction at least 5 rounds of chemotherapy before remittance. 
 
 
 %% Third Section
@@ -193,6 +197,7 @@ we see a sharp decline followed by a continuation of exponential growth
 \begin{figure}[htb]
 \begin{center} %Put your images in a figure like this
 \includegraphics[width=\textwidth]{./images/chemo.pdf} 
+\vspace*{-50mm}
 \end{center}
 \caption{Tumor burden with vs without chemo session}
 \label{fig:chemo} % for automatic cross referencing
@@ -216,12 +221,13 @@ we start to see some problems, which we will address in the analysis/conclusions
 \begin{figure}[htb]
 \begin{center} %Put your images in a figure like this
 \includegraphics[width=\textwidth]{./images/forward_immune.pdf} % Better to make them pdfs than png or gif or jpeg
+\vspace*{-50mm}
 \end{center}
 \caption{Various plots of the populations for different initial values}
 \label{fig:forward} % for automatic cross referencing
 \end{figure}
 
-Clearly and succinctly state and describe the conclusions that you can draw from the model you have achieved (or the many failed attempts). Does your model(s) perform well quantitatively or qualitatively?
+
 
 %%Fourth Section
 \section{Analysis/Conclusions}
@@ -237,9 +243,12 @@ Specifically, after about 35 days we start to see negative populations and disco
 in population. While we may be able to gain some insight on the interaction between cancer cells, 
 Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
 
-The overall model has some unique strengths and weaknesses as well. As shown above, it predicts that after a certain number of chemotherapy treatments the cancer will die out due to the immune response overwhelming the trace amounts of cells. It also accurately show that if not enough chemotherapy treatments are given, the tumor burden returns to high levels rather quickly. 
+Our full model produces reasonable results, but the immune system component of the model remains a weak point. Qualitatively, our model performs as expected when we include chemotherapy. However, the immune system component remains too strong when left on its own. Only by including the effects of chemotherapy on the immune system did we keep the strength of the CD8 cells in check. If our model is to be useful, it needs to accurately predict tumor burden in the absence of chemotherapy.
 
-While it does not break down after 1 month like the immune model it does, however, show a concerning dependence on initial conditions. With a large initial tumor burden, the model shows that the burden will decrease under effects of the immune system alone, which runs counter to what is observed.
+If our model were accurate in predicting tumor burden alone, it might be useful to prescribe chemotherapy treatments to breast cancer patients. Given initial measurements of tumor burden and immune cells, doctors could verify whether a patient is in remission. 
+
+Unfortunately, on the other end of the table, results of treatment are not always positive. Our model might indicate whether chemotherapy is a viable cure to breast cancer of a certain size given immune system conditions. However, currently, our model does not predict negative outcomes well. Given more time, we might figure out constants for which certain initial conditions produce an overtake by cancer cell growth and thus an equilibrium solution representing a bad outcome.
+
 
 
 \appendix
