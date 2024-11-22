@@ -93,7 +93,13 @@ Thus, our focus is to model the growth of a HER2 positive breast cancer in relat
 %% Finite Difference methods, feel free to edit or place where you would like --Rebecca
 In solving the original Gompertz model, finite difference methods were used because of their simplicity yet relative accuracy. The local truncation error for Forward Euler can be found as follows $\tau_i = |T^\prime(t_i) - \frac{T(t_i + h) - T(t_i)}{h}|$  where $T(t_i)$ is the actual solution at time $i$. Using Taylor Series, we can expand this to $\Bigl |T^\prime(t_i) - \frac{T(t_i) + hT^\prime(t_i) + h^2T^\dprime(t_i) + h^3T^{\prime\prime\prime}(t_i) + O(h^4) - T(t_i)}{h}\Bigr |$ which simplifies to $|-hT^\dprime(t_i) - h^2T^{\prime \prime \prime}(t_i) + O(h^3)| = O(h)$. So although quick to code and compute, there is a relatively large error term. 
 
-\includegraphics[width=\textwidth]{./images/logistic.pdf}
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{./images/logistic.pdf} 
+\end{center}
+\caption{Tumor Burden for various growth functions}
+\label{fig:growth} % for automatic cross referencing
+\end{figure}
 
 %% End Finite Difference methods
 
@@ -179,7 +185,13 @@ We see that without chemotherapy the cancer grows exponentially.
 On the other hand, after a session of chemo, 
 we see a sharp decline followed by a continuation of exponential growth
 
-\includegraphics[width=\textwidth]{./images/chemo.pdf}
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{./images/chemo.pdf} 
+\end{center}
+\caption{Tumor burden with vs without chemo session}
+\label{fig:chemo} % for automatic cross referencing
+\end{figure}
 
 \begin{figure}[htb]
 \begin{center} %Put your images in a figure like this
