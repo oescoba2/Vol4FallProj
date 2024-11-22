@@ -92,6 +92,9 @@ Thus, our focus is to model the growth of a HER2 positive breast cancer in relat
 
 %% Finite Difference methods, feel free to edit or place where you would like --Rebecca
 In solving the original Gompertz model, finite difference methods were used because of their simplicity yet relative accuracy. The local truncation error for Forward Euler can be found as follows $\tau_i = |T^\prime(t_i) - \frac{T(t_i + h) - T(t_i)}{h}|$  where $T(t_i)$ is the actual solution at time $i$. Using Taylor Series, we can expand this to $\Bigl |T^\prime(t_i) - \frac{T(t_i) + hT^\prime(t_i) + h^2T^\dprime(t_i) + h^3T^{\prime\prime\prime}(t_i) + O(h^4) - T(t_i)}{h}\Bigr |$ which simplifies to $|-hT^\dprime(t_i) - h^2T^{\prime \prime \prime}(t_i) + O(h^3)| = O(h)$. So although quick to code and compute, there is a relatively large error term. 
+
+\includegraphics[width=\textwidth]{./images/logistic.pdf}
+
 %% End Finite Difference methods
 
 The \textit{Gompertz} model is a logistic model that was created to describe the growth of human mortality in 1825 by Benjamin Gompertz.
@@ -171,6 +174,13 @@ where $D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T$
 %% Third Section
 \section{Results}
 
+Here we have a forward Euler numerical method approximating the tumor burden with and without a single session of chemotherapy. 
+We see that without chemotherapy the cancer grows exponentially. 
+On the other hand, after a session of chemo, 
+we see a sharp decline followed by a continuation of exponential growth
+
+\includegraphics[width=\textwidth]{./images/chemo.pdf}
+
 \begin{figure}[htb]
 \begin{center} %Put your images in a figure like this
 \includegraphics[width=\textwidth]{./images/image.pdf} % Better to make them pdfs than png or gif or jpeg
@@ -195,7 +205,16 @@ Clearly and succinctly state and describe the conclusions that you can draw from
 
 Discuss the appropriateness of the techniques/methods you employed in modeling. Did your group appropriately model the chosen phenomenon? If not, what different steps could you have taken if you had more time? What did you learn about the techniques/method that were used in the group project? If your model was successful, what additional insight/conclusions could you obtain from it? For instance, if you had a successfully modified SIR model, how might it affect different government policy? If you had a successful model for the spread of inaccurate information on social media, how might it be implemented to help reduce the spread of inaccurate information?
 
-In modeling the immune system alone, we had some success, but the dynamics we were able to capture don't work well on a long enough time scale. Specifically, after about 35 days we start to see negative populations and discontinuous changes in population. While we may be able to gain some insight on the interaction between cancer cells, Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
+Our initial numerical method approximating the tumor burden with and without chemo showed the sharp decline that a chemo session causes in the tumor cell population. 
+On a long enough time scale we would see a plateau in the chemo population growth as it reaches its carrying capacity. 
+The challenge with this dynamic is that this only models a single chemo session, 
+while we would expect many round of several sessions each in the treatment of cancer.
+
+In modeling the immune system alone, we had some success, 
+but the dynamics we were able to capture don't work well on a long enough time scale. 
+Specifically, after about 35 days we start to see negative populations and discontinuous changes 
+in population. While we may be able to gain some insight on the interaction between cancer cells, 
+Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
 
 This part should all be done before you get to \emph{page 11}.  The bibliography can spill on to page 11, but we won't read text that goes past page 10.
 

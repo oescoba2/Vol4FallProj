@@ -4,4 +4,10 @@ The fully integrated cancer model with both chemotherapy and immune cells predic
 
 In order to fix the full tumor growth model qualitatively, we introduced a term in the differential equations for both CD8 cells and natural killer cells. Scientific papers have produced different conclusions on whether chemotherapy inhibits CD8 and natural killer cells[CITE], but we chose to incorporate a term which inhibits CD8 and natural killer cells in proportion to their interactions with the chemotherapy drug. We altered this new parameter until simulations prediction at least 5 rounds of chemotherapy before remittance. 
 
+## Analysis
 
+Our full model produces reasonable results, but the immune system component of the model remains a weak point. Qualitatively, our model performs as expected when we include chemotherapy. However, the immune system component remains too strong when left on its own. Only by including the effects of chemotherapy on the immune system did we keep the strength of the CD8 cells in check. If our model is to be useful, it needs to accurately predict tumor burden in the absence of chemotherapy.
+
+If our model were accurate in predicting tumor burden alone, it might be useful to prescribe chemotherapy treatments to breast cancer patients. Given initial measurements of tumor burden and immune cells, doctors could verify whether a patient is in remission. 
+
+Unfortunately, on the other end of the tabe, results of treatment are not always positive. Our model might indicate whether chemotherapy is a viable cure to breast cancer of a certain size given immune system conditions. However, currently, our model does not predict negative outcomes well. Given more time, we might figure out constants for which certain initial conditions produce an overtake by cancer cell growth and thus an equilibrium solution representing a bad outcome.
