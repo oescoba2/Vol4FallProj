@@ -208,7 +208,13 @@ In the paper published, the populations only go to about 35 days.
 Below we've created similar plots, but as we increase the time beyond 35 days, 
 we start to see some problems, which we will address in the analysis/conclusions section.
 
-\includegraphics[width=\textwidth]{./images/forward_immune.pdf}
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{./images/forward_immune.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{Various plots of the populations for different initial values}
+\label{fig:forward} % for automatic cross referencing
+\end{figure}
 
 Clearly and succinctly state and describe the conclusions that you can draw from the model you have achieved (or the many failed attempts). Does your model(s) perform well quantitatively or qualitatively?
 
