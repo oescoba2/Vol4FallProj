@@ -40,7 +40,7 @@ The main hope of these general growth models is to be able to use these models t
 The more commonly used models due to their simplicity are linear, exponential, and logistic models (see\ \ref{appendix: models} for equations).
 However, these do not accurately reflect the full and overall growth of observed cancers with the exception of a few cancer scenarios.
 That is, they fail to generalize to the dynamics a cancer will exhibit: primarily that it has slow exponential rate and a maximal size.
-In particular, even when considering a death rate, the exponential model\ \eqref{eq: exp} is characterized by an infinite growth as $t$ increases which does not reflect the fact that a tumor can have a maximum size.
+In particular, the exponential model\ \eqref{eq: exp} is characterized by an infinite growth as $t$ increases which does not reflect the fact that a tumor can have a maximum size, even when considering a death rate.
 Moreover, the logistic model\ \eqref{eq: logistic} converges too fast to the max size, $T_{\max}$, a tumor can be\ \cite{Steb23}.
 As such, a need for a model that can firstly exhibit a slow exponential rate and then a slow convergence to the carrying capacity is preferred to others that only exhibit one of these two characteristics.
 
@@ -137,24 +137,26 @@ Adding \eqref{eq: chemo} to our growth in \eqref{eq: gompertz} gives
 \begin{equation}
 	\frac{\diff T(t)}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu c(t) =k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu e^{-\gamma t} \label{eq: gompertz-chemo}.
 \end{equation}
-For our purposes, we chose to go with a chemotherapy treatment plan of one dose every two weeks for a total of 14 doses. 
 
+%edited
+The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. The number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the current number of cells of each type. This results in the following system of equations.
 
-
-The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of NK and CD8+ cells. This results in the following system of equations.
-
-\begin{equation} \label{eq1}
-\frac{dT}{dt} = aT(1-bT) - cNT - D 
+\begin{equation} \label{eq:unifiedmodel}
+\frac{\diff T}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu e^{-\gamma t} - n_{kr}NT - D 
 \end{equation}
-\begin{equation} \label{eq2}
-\frac{dN}{dt} = \sigma - fN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t}
+\begin{equation} \label{eq: NK}
+\frac{\diff N}{\diff t} = \sigma - n_dN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t}
 \end{equation}
-\begin{equation} \label{eq3}
-\frac{dL}{dt} = - mL +\frac{jD^2}{k + D^2}L - qLT + rNT
+\begin{equation} \label{eq:CD8}
+\frac{\diff L}{\diff t} = - mL +\frac{jD^2}{l_r + D^2}L - qLT + rNT - Lf \mu e^{-\gamma t}
 \end{equation}
-\begin{equation} \label{eq4}
+\begin{equation} \label{eq:Dconst}
 D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \end{equation}
+
+The constants and form of the equation should be familiar, as they are taken directly from the above equations. 
+%end edited
+
 
 
 
@@ -162,23 +164,70 @@ D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 
 
 %% Third Section
+
+%%%% Oscar
 \section{Results}
 
-\begin{figure}[htb]
+\begin{figure}[h!]
 \begin{center} %Put your images in a figure like this
-\includegraphics[ scale=0.5]{./images/tumor_growth.pdf} % Better to make them pdfs than png or gif or jpeg
+\includegraphics[scale=0.6]{./images/tumor_growth.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
-\caption{The growth of breast cancer growth as modeled by
-}
-\label{fig:MeanSquaredError} % for automatic cross referencing
+\caption{The growth of breast cancer growth as modeled by \eqref{eq:unifiedmodel} }
+\label{fig:FullODE} % for automatic cross referencing
+\end{figure}
+To solve the equation given by\ \eqref{eq:unifiedmodel}, we used \begin{verbatim} scipy.integrate.solve_ivp \end{verbatim}
+that use the explicit Runge-Kutta method of order 5(4) which assumes an accuracy of the fourth-order but takes steps using a fifth-order accurate formula.
+In particular, we focused on using a tumor burden of $9\times10^9$ which is an order of magnitude less than what [CITE] states being clearly identifiable by medicine and even the immune system itself. 
+Moreover, we chose to go with a chemotherapy treatment plan of one dose every four weeks (i.e.\ 28 days) for a total of 14 doses.
+Specifically, those doses started about 60 days after the initial discovery of tumor.
+The results are shown in\ Figure~\ref{fig:FullODE}.
+These results seem to be on par with the estimates given by Mayo Clinic where for advanced breast cancer, treatment is beyond that of six months.
+
+
+\begin{figure}[h!]
+\begin{center} %Put your images in a figure like this
+\includegraphics[scale=0.6]{./images/CD8_growth.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{The growth of CD8$^+$  cells in a local tumor site as modeled by \eqref{eq:unifiedmodel} using a logscale for the number of cells present.}
+\label{fig:CD8growth} % for automatic cross referencing
 \end{figure}
 
 
+\begin{figure}[h!]
+\begin{center} %Put your images in a figure like this
+\includegraphics[scale=0.6]{./images/NK_growth.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{The growth of NK cells in a local tumor site as modeled by \eqref{eq:unifiedmodel} using a logscale for the number of cells present.}
+\label{fig:NKgrowth} % for automatic cross referencing
+\end{figure}
+
+%%%% OScar
 
 Clearly and succinctly state and describe the conclusions that you can draw from the model you have achieved (or the many failed attempts). Does your model(s) perform well quantitatively or qualitatively?
 
 %%Fourth Section
 \section{Analysis/Conclusions}
+
+In modeling the immune system alone, we had some success, but the dynamics we were able to capture don't work well on a long enough time scale. Specifically, after about 35 days we start to see negative populations and discontinuous changes in population. While we may be able to gain some insight on the interaction between cancer cells, Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
+
+
+
+
+%new
+
+The overall model has some unique strengths and weaknesses as well. As shown above, it predicts that after a certain number of chemotherapy treatments the cancer will die out due to the immune response overwhelming the trace amounts of cells. It also accurately show that if not enough chemotherapy treatments are given, the tumor burden returns to high levels rather quickly. 
+
+While it does not break down after 1 month like the immune model it does, however, show a concerning dependence on initial conditions. With a large initial tumor burden, the model shows that the burden will decrease under effects of the immune system alone, which runs counter to what is observed.
+
+%end new
+
+Weaknesses
+Sensitivity to initial conditions
+Some question of constants
+
+
+
+
 
 Discuss the appropriateness of the techniques/methods you employed in modeling. Did your group appropriately model the chosen phenomenon? If not, what different steps could you have taken if you had more time? What did you learn about the techniques/method that were used in the group project? If your model was successful, what additional insight/conclusions could you obtain from it? For instance, if you had a successfully modified SIR model, how might it affect different government policy? If you had a successful model for the spread of inaccurate information on social media, how might it be implemented to help reduce the spread of inaccurate information?
 
