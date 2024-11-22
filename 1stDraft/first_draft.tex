@@ -141,6 +141,11 @@ The combination of the two models requires some thought. The Gompertz-Chemo inte
 D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \end{equation}
 
+Here we provide an explanation of each component of the differential equations, where the constants are defined in the appendix. \\
+In equation (4) the term $aT(1-b)$ is the logistic growth of the tumor. The term $cNT$ is the number of tumor cells killed in the interaction between tumor cells and NK cells. And D is the number of tumor cells killed in the interaction between CD8+ cells and tumor cells. \\
+In equation (5) the term $\sigma$ is the constant inflow of NK cells, the term $fN$ is the number of NK cells that naturally die every day, The term $\frac{gT^2}{h + T^2}N$ is the number of NK cells that are recruited to fight the tumor, and the term $pNT$ is the number of NK cells deactivated by the tumor cells.\\
+In equation (6) the term $mL$ is the number of CD8+ cells that naturally die. The term $\frac{jD^2}{k + D^2}L$ is the number of CD8+ cells recruited to fight cancer. The term $qLT$ is the number of CD8+ cells deactivated by tumor cells. The term $rNT$ is the number of CD8+ cells produced after NK cells die to Tumor cells.\\
+
 
 
  The primary aspect of the project is the modeling of the chosen phenomenon. If your group's repeated attempts resulted in abject failure, or your group succeeded, detail them in this section. Be sure to account for the various attempted models and why they were not appropriate. Include numerical simulations for each attempted model.  Reference figures and plots, like Figure~\ref{fig:MeanSquaredError}.
@@ -158,7 +163,9 @@ D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \label{fig:MeanSquaredError} % for automatic cross referencing
 \end{figure}
 
+Here we plot the differential equations (4-6). We get our initial values from a plot in the paper where we got the differential equations. In the paper published, the populations only go to about 35 days. Below we've created similar plots, but as we increase the time beyond 35 days, we start to see some problems, which we will address in the analysis/conclusions section.
 
+\includegraphics[width=\textwidth]{./images/forward_immune.pdf}
 
 Clearly and succinctly state and describe the conclusions that you can draw from the model you have achieved (or the many failed attempts). Does your model(s) perform well quantitatively or qualitatively?
 
@@ -167,7 +174,7 @@ Clearly and succinctly state and describe the conclusions that you can draw from
 
 Discuss the appropriateness of the techniques/methods you employed in modeling. Did your group appropriately model the chosen phenomenon? If not, what different steps could you have taken if you had more time? What did you learn about the techniques/method that were used in the group project? If your model was successful, what additional insight/conclusions could you obtain from it? For instance, if you had a successfully modified SIR model, how might it affect different government policy? If you had a successful model for the spread of inaccurate information on social media, how might it be implemented to help reduce the spread of inaccurate information?
 
-
+In modeling the immune system alone, we had some success, but the dynamics we were able to capture don't work well on a long enough time scale. Specifically, after about 35 days we start to see negative populations and discontinuous changes in population. While we may be able to gain some insight on the interaction between cancer cells, Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
 
 This part should all be done before you get to \emph{page 11}.  The bibliography can spill on to page 11, but we won't read text that goes past page 10.
 
@@ -238,6 +245,28 @@ of itself
 		\end{itemize}
 	\item Immunological Response Models:
 		\begin{itemize}
+			\item Pillis, Radunskaya, Wiseman:\\
+                    $\frac{dT}{dt} = aT(1-bT) - cNT - D\\$
+                    $\frac{dN}{dt} = \sigma - fN +\frac{gT^2}{h + T^2}N - pNT\\$
+                    $\frac{dL}{dt} = - mL +\frac{jD^2}{k + D^2}L - qLT + rNT\\$
+                    $D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T$\\
+                    Where we define each constant:
+                    \begin{itemize}
+                    \item a = $5.14 \times 10^{-1}$ has units $day^{-1}$ is the tumor growth rate
+                    \item b = $1.02 \times 10^{-9}$ has units $cell^{-1}$ where  $\frac{1}{b}$ is the tumor carrying capacity.
+                    \item = $3.23 \times 10^{-7}$ has units $cell^{-1}day^{-1}$ is the fractional cell kill(see appendix) rate of NK cells against tumors.  
+                    \item $sigma = 1.3 \times 10^4$ has units $cells day^{-1}$ is the constant NK cells production.
+                    \item $f = 4.12 \times 10^{-2}$ has units $day^{-1}$ is the natural death rate of NK cells.
+                    \item $g = 2.5 \times 10^-2$ has units $day^{-1}$ is the max NK recruitment
+                    \item $h = 2.02 \times 10^7$ has units $cell^2$ is the steepness coefficient of the NK recruitment curve.
+                    \item $p = 1.00 \times 10^{-7}$ has units $cell^{-1}day^{-1}$ is the rate at which tumors incapacitate NK cells
+                    \item $m = 2.00 \times 10^{-2}$ has units $day^{-1}$ is the natural death rate of CD8+ cells.
+                    \item $j = 3.75 \times 10^{-2}$ has units $day^{-1}$ is the max CD8+ recruitment rate, and the constant $k = 2 \times 10^7$ has units $cell^2$ is the steepness coefficient of the CD8+ recruitment curve.
+                    \item $k = 2 \times 10^7$ has units $cell^2$ is the steepness coefficient of the CD8+ recruitment curve.
+                    \item $q = 3.42 \times 10^{-10}$ has units $cell^{-1}day^{-1}$ is the rate that tumors deactivate CD8+ cells.
+                    \item $r =1.1 \times 10^{-7} $ has units $cell^{-1}day^{-1}$ is the rate at which those CD8+ cells are produced. 
+                    \item $d = 5.80$ has units $day^{-1}$ is the saturation level of fractional tumor cell kill by CD8+ T cells
+                    \item $s = 2.5 \times 10^{-1}$ has no units, and is the steepness of the curve which determines the Tumor vs. CD8+ cell competition. Lastly, \item $\lambda = 1.36$ has no units. 
 			\item Alharbi \& Sham Rambely: their modeling equations looked at the interaction of tumor cells and the immune system, $I$, as a whole as well as normal cells , $N$, (non-immune, non-tumor cells). They described the relationships by (using a logistic growth for tumor $T$):
 				\begin{eqnarray}
 					\begin{aligned}
