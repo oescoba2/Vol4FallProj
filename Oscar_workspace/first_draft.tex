@@ -70,16 +70,26 @@ Thus, a good model, depending on the cancer, should have a more specific interac
 If it is general, it suffices to show the interaction as whole.
 
 The modeling for tumor-immunological response typically look at relationship between natural killer cells (NK) and cytotoxic T-cells (CD8$^+$) (see\ \ref{appendix: defs}) and how they affect tumor growth.
-The NK cells are Although there are many other cells which contribute to an immune response, NK cells and CD8 cells are the only ones which directly kill the cancer cells in breast cancers\ \cite{Amens21}.
+Although there are many other cells which contribute to an immune response, NK cells and CD8 cells are the only ones which directly kill the cancer cells in breast cancers\ \cite{Amens21}.
 The CD8+ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8$^+$, and cancer cells. 
-Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun. Because of the immunocomprimising effects of radiation and chemotherapy, the body's ability to fight tumors naturally will decrease, leading to interesting dynamics of the cell populations.
+Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun.
+Because of the immunocomprimising effects of radiation and chemotherapy, the body's ability to fight tumors naturally will decrease, leading to interesting dynamics of the cell populations.
+Thus, we expect to see some description showing how the NK or CD8$^+$ cells become inhibited or die off as chemotherapy is introduced.
+
+One important term that is used in modeling the interactions between the immune system and the tumor comes from the biochemistry equation for enzymatic reaction rates known as \textit{Michaelis-Menten kinetics}.
+Specifically, the Michaelis-Menten kinetics model the rate at which an enzyme acts upon some molecule to form a complex and then act in such a way so as to produce a new product and regenerate the original enzyme.
+In the context of tumor modeling, the Michaelis-Menten kinetics model the interaction between abnormal cells and the immune system, immune system and tumor cells, and tumor-tumor cell interactions.
+The former describes the rate of the immune system responding to the growth of abnormal cells that could potentially become cancer.
+The latter specifically considers the rate of how tumors induce other cells to become tumor cells, and the middle interaction would look at seeing specifically the rate of change between the immune system being affected by the tumor but as well as affecting the tumor itself\ \cite{math8081285}.
+Hence, any model looking into the interaction of a tumor with the immune system should consider similar interactions or those modeled by Michaelis-Menten.
 
 
+Given all of these characteristics for modeling tumor growth in general, as well the intricacies of chemotherapy, and then adding the difficulties of modeling immune-tumor interactions, we can gain an understanding why there is much difficulty in getting an overall general model that works for any cancer and any form of chemotherapy.
+Thus, our attempt is to bring forth a model that can work in a generalized setting with the current limitations and known interactions and behaviors that a tumor-growth model should exhibit. 
+To aid with the difficulty of making a generalized model, we decided to specifically focus on breast cancer seeing that is National Cancer Institute records it as having the most number of cases as of 2024.
+Moreover, we also focused specifically on the immunological response given by NK and CD8$^+$ cells as well as adding the aid that comes from chemotherapy.
+Lastly, our tumor growth modeling focused on a sigmoidal relationship given by Gompertz.
 
-
-TODO Add graph showing the different models
-
-Thus, our focus is to model the growth of a HER2 positive breast cancer in relation to immunological system response of the Nk and CB cells and under neoadjuvent (see \ref{appendix: defs}) chemotheraphy.
 
 %\begin{figure}[htb]
 %\begin{center} %Put your images in a figure like this
