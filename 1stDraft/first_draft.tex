@@ -167,16 +167,16 @@ In equation \eqref{eq: dL} the term $mL$ is the number of CD8+ cells that natura
 
 The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of NK and CD8+ cells. This results in the following system of equations.
 
-\begin{equation} \label{eq1}
+\begin{equation} \label{eq:unifiedmodel}
 \frac{\diff T}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu e^{-\gamma t} - n_{kr}NT - D 
 \end{equation}
-\begin{equation} \label{eq2}
+\begin{equation} \label{eq: NK}
 \frac{\diff N}{\diff t} = \sigma - n_dN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t}
 \end{equation}
-\begin{equation} \label{eq3}
+\begin{equation} \label{eq:CD8}
 \frac{\diff L}{\diff t} = - mL +\frac{jD^2}{l_r + D^2}L - qLT + rNT - Lf \mu e^{-\gamma t}
 \end{equation}
-\begin{equation} \label{eq4}
+\begin{equation} \label{eq:Dconst}
 D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \end{equation}
 
@@ -194,23 +194,29 @@ We see that without chemotherapy the cancer grows exponentially.
 On the other hand, after a session of chemo, 
 we see a sharp decline followed by a continuation of exponential growth
 
-\begin{figure}[htb]
-\begin{center} %Put your images in a figure like this
-\includegraphics[width=\textwidth]{./images/chemo.pdf} 
-\vspace*{-50mm}
-\end{center}
-\caption{Tumor burden with vs without chemo session}
-\label{fig:chemo} % for automatic cross referencing
-\end{figure}
+%%\begin{figure}[h!]
+%%\begin{center} %Put your images in a figure like this
+%%\includegraphics[width=\textwidth]{./images/chemo.pdf} 
+%%\vspace*{-50mm}
+%%\end{center}
+%%\caption{Tumor burden with vs without chemo session}
+%%\label{fig:chemo} % for automatic cross referencing
+%%\end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[h!]
 \begin{center} %Put your images in a figure like this
-\includegraphics[width=\textwidth]{./images/image.pdf} % Better to make them pdfs than png or gif or jpeg
+\includegraphics[scale=0.6]{./images/tumor_growth.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
-\caption{The growth of breast cancer growth as modeled by
-}
-\label{fig:MeanSquaredError} % for automatic cross referencing
+\caption{The growth of breast cancer growth as modeled by \eqref{eq:unifiedmodel} }
+\label{fig:FullODE} % for automatic cross referencing
 \end{figure}
+To solve the equation given by\ \eqref{eq:unifiedmodel}, we used \begin{verbatim} scipy.integrate.solve_ivp \end{verbatim}
+that use the explicit Runge-Kutta method of order 5(4) which assumes an accuracy of the fourth-order but takes steps using a fifth-order accurate formula.
+In particular, we focused on using a tumor burden of $9\times10^9$ which is an order of magnitude less than what [CITE] states being clearly identifiable by medicine and even the immune system itself. 
+Moreover, we chose to go with a chemotherapy treatment plan of one dose every four weeks (i.e.\ 28 days) for a total of 14 doses.
+Specifically, those doses started about 60 days after the initial discovery of tumor.
+The results are shown in\ Figure~\ref{fig:FullODE}.
+These results seem to be on par with the estimates given by Mayo Clinic where for advanced breast cancer, treatment is beyond that of six months.
 
 Here we plot the differential equations of the immune system. 
 We get our initial values from a plot in the paper where we got the differential equations. 
@@ -218,14 +224,31 @@ In the paper published, the populations only go to about 35 days.
 Below we've created similar plots, but as we increase the time beyond 35 days, 
 we start to see some problems, which we will address in the analysis/conclusions section.
 
-\begin{figure}[htb]
+\begin{figure}[h!]
 \begin{center} %Put your images in a figure like this
-\includegraphics[width=\textwidth]{./images/forward_immune.pdf} % Better to make them pdfs than png or gif or jpeg
-\vspace*{-50mm}
+\includegraphics[scale=.6]{./images/forward_immune.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
 \caption{Various plots of the populations for different initial values}
 \label{fig:forward} % for automatic cross referencing
 \end{figure}
+
+\begin{figure}[h!]
+\begin{center} %Put your images in a figure like this
+\includegraphics[scale=0.6]{./images/CD8_growth.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{The growth of CD8$^+$  cells in a local tumor site as modeled by \eqref{eq:unifiedmodel} using a logscale for the number of cells present.}
+\label{fig:CD8growth} % for automatic cross referencing
+\end{figure}
+
+
+\begin{figure}[h!]
+\begin{center} %Put your images in a figure like this
+\includegraphics[scale=0.6]{./images/NK_growth.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{The growth of NK cells in a local tumor site as modeled by \eqref{eq:unifiedmodel} using a logscale for the number of cells present.}
+\label{fig:NKgrowth} % for automatic cross referencing
+\end{figure}
+
 
 
 
