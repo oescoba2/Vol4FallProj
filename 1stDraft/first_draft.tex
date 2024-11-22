@@ -59,32 +59,36 @@ These are also specific to a certain phase of the cell state, but despite their 
 Further, the effect the drug has on the tumor burden is usually also attributed to only the drug itself and the effects, while at times minimal, of the immune system fighting the cancer is omitted.
 Given these characteristics, it is of interest to find an expression for the effect of chemotherapy that has a rapid change in tumor burden and either on all cells or at specific cell-states but also has an effect on the immune system.
 
-On the other hand, the immune system naturally patrols the body in search of foreign bodies to kill and prevent diseases.
-
-This patrolling involves not just for foreign bacteria but also abnormal cells such as cancer cells. 
-The modeling for tumor-immunological response typically look at relationship between natural killer cells (NK) and cytotoxic T-cells (CD8+)$^+$ (see\ \ref{appendix: defs}) and how they affect tumor growth. The NK cells are Although there are many other cells which contribute to an immune response, NK cells and CD8 cells are the only ones which directly kill the cancer cells in breast cancers \cite{Amens21}. The CD8+ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8+, and cancer cells. 
-Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun. Because of the immunocomprimising effects of radiation and chemotherapy, the body's ability to fight tumors naturally will decrease, leading to interesting dynamics of the cell populations.
-
+The immune system naturally patrols the body in search of foreign bodies to kill and prevent diseases.
 The patrolling and immediate responses are given by the innate immune system and helper response to anything missed by the immediate response as well as targeted response is handled primarily by the adaptive immune system (see\ \ref{appendix: defs}).
+This patrolling is not just for foreign bacteria but also abnormal cells such as cancer cells. 
 Majority of models, like those in\ \ref{eq: dePillisTumorImmuno} or\ \ref{eq: AlharbiTumorImmuno}, look at these two parts of the immune system as  a whole and its interaction with the tumor and normal cells.
 That is, they do not look at the specific immune cells interacting with the cancer other than the collective response of the immune system on tumor growth.
 But as mentioned by de Pillis et. al, ``in some applications, it is not sufficient to represent the immune response with a single homogeneous population of
 effector killer cells\ \cite{dePillis2014461}."
+Thus, a good model, depending on the cancer, should have a more specific interaction between the immune cells that deal with that cancer in particular and the cancer itself.
+If it is general, it suffices to show the interaction as whole.
+
+The modeling for tumor-immunological response typically look at relationship between natural killer cells (NK) and cytotoxic T-cells (CD8$^+$) (see\ \ref{appendix: defs}) and how they affect tumor growth.
+Although there are many other cells which contribute to an immune response, NK cells and CD8 cells are the only ones which directly kill the cancer cells in breast cancers\ \cite{Amens21}.
+The CD8+ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8$^+$, and cancer cells. 
+Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun.
+Because of the immunocomprimising effects of radiation and chemotherapy, the body's ability to fight tumors naturally will decrease, leading to interesting dynamics of the cell populations.
+Thus, we expect to see some description showing how the NK or CD8$^+$ cells become inhibited or die off as chemotherapy is introduced.
+
+One important term that is used in modeling the interactions between the immune system and the tumor comes from the biochemistry equation for enzymatic reaction rates known as \textit{Michaelis-Menten kinetics}.
+Specifically, the Michaelis-Menten kinetics model the rate at which an enzyme acts upon some molecule to form a complex and then act in such a way so as to produce a new product and regenerate the original enzyme.
+In the context of tumor modeling, the Michaelis-Menten kinetics model the interaction between abnormal cells and the immune system, immune system and tumor cells, and tumor-tumor cell interactions.
+The former describes the rate of the immune system responding to the growth of abnormal cells that could potentially become cancer.
+The latter specifically considers the rate of how tumors induce other cells to become tumor cells, and the middle interaction would look at seeing specifically the rate of change between the immune system being affected by the tumor but as well as affecting the tumor itself\ \cite{math8081285}.
+Hence, any model looking into the interaction of a tumor with the immune system should consider similar interactions or those modeled by Michaelis-Menten.
 
 
-TODO Add graph showing the different models
-
-Thus, our focus is to model the growth of a HER2 positive breast cancer in relation to immunological system response of the Nk and CB cells and under neoadjuvent (see \ref{appendix: defs}) chemotheraphy.
-
-%\begin{figure}[htb]
-%\begin{center} %Put your images in a figure like this
-%\includegraphics[width=\textwidth]{Myfig.pdf} % Better to make them pdfs than png or gif or jpeg
-%\end{center}
-%\caption{Plots should be high resolution (pdf 300dpi), uncluttered, a reasonable size, and easily readable and understandable.  All figures should have a complete caption that helps the reader make sense of the figure even if they haven't read the paper yet. Here is an example: This figure shows the risk or mean squared error (in black) of for a generic family of regression models as a function of model complexity (the number of free parameters in the model).  The generalized aliasing decomposition shows that the risk is the sum of three parts: Model insufficiency (red), Data insufficiency (green), and Aliasing (blue).  Model insufficiency is monotonically decreasing as a function of complexity, Data insufficiency vanishes when the number of parameters is less than the number of training points (the classical regime), but increases monotonically in the modern regime (where the number of parameters is greater than the number of data points).  Aliasing generally increases up to the interpolation threshold and decreases thereafter, converging to zero almost surely as the number of parameters goes to infinity.  
-%}
-%\label{fig:MeanSquaredError} % for automatic cross referencing
-%\end{figure}
-
+Given all of these characteristics for modeling tumor growth in general, as well the intricacies of chemotherapy, and then adding the difficulties of modeling immune-tumor interactions, we can gain an understanding why there is much difficulty in getting an overall general model that works for any cancer and any form of chemotherapy.
+Thus, our attempt is to bring forth a model that can work in a generalized setting with the current limitations and known interactions and behaviors that a tumor-growth model should exhibit. 
+To aid with the difficulty of making a generalized model, we decided to specifically focus on breast cancer seeing that is National Cancer Institute records it as having the most number of cases as of 2024.
+Moreover, we also focused specifically on the immunological response given by NK and CD8$^+$ cells as well as adding the aid that comes from chemotherapy.
+Lastly, our tumor growth modeling focused on a sigmoidal relationship given by Gompertz.
 
 
 %% Second Section 
@@ -163,18 +167,19 @@ In equation \eqref{eq: dL} the term $mL$ is the number of CD8+ cells that natura
 The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of NK and CD8+ cells. This results in the following system of equations.
 
 \begin{equation} \label{eq1}
-\frac{dT}{dt} = aT(1-bT) - cNT - D \label{eq: dT},
+\frac{\diff T}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu e^{-\gamma t} - n_{kr}NT - D 
 \end{equation}
 \begin{equation} \label{eq2}
-\frac{dN}{dt} = \sigma - fN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t} \label{eq: dN},
+\frac{\diff N}{\diff t} = \sigma - n_dN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t}
 \end{equation}
 \begin{equation} \label{eq3}
-\frac{dL}{dt} = - mL +\frac{jD^2}{k + D^2}L - qLT + rNT \label{eq: dL},
+\frac{\diff L}{\diff t} = - mL +\frac{jD^2}{l_r + D^2}L - qLT + rNT - Lf \mu e^{-\gamma t}
 \end{equation}
-where $D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T$
+\begin{equation} \label{eq4}
+D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
+\end{equation}
 
-
- The primary aspect of the project is the modeling of the chosen phenomenon. If your group's repeated attempts resulted in abject failure, or your group succeeded, detail them in this section. Be sure to account for the various attempted models and why they were not appropriate. Include numerical simulations for each attempted model.  Reference figures and plots, like Figure~\ref{fig:MeanSquaredError}.
+The constants and form of the equation should be familiar, as they are taken directly from the above equations. 
 
 
 %% Third Section
@@ -221,8 +226,6 @@ Clearly and succinctly state and describe the conclusions that you can draw from
 %%Fourth Section
 \section{Analysis/Conclusions}
 
-Discuss the appropriateness of the techniques/methods you employed in modeling. Did your group appropriately model the chosen phenomenon? If not, what different steps could you have taken if you had more time? What did you learn about the techniques/method that were used in the group project? If your model was successful, what additional insight/conclusions could you obtain from it? For instance, if you had a successfully modified SIR model, how might it affect different government policy? If you had a successful model for the spread of inaccurate information on social media, how might it be implemented to help reduce the spread of inaccurate information?
-
 Our initial numerical method approximating the tumor burden with and without chemo showed the sharp decline that a chemo session causes in the tumor cell population. 
 On a long enough time scale we would see a plateau in the chemo population growth as it reaches its carrying capacity. 
 The challenge with this dynamic is that this only models a single chemo session, 
@@ -234,7 +237,10 @@ Specifically, after about 35 days we start to see negative populations and disco
 in population. While we may be able to gain some insight on the interaction between cancer cells, 
 Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
 
-This part should all be done before you get to \emph{page 11}.  The bibliography can spill on to page 11, but we won't read text that goes past page 10.
+The overall model has some unique strengths and weaknesses as well. As shown above, it predicts that after a certain number of chemotherapy treatments the cancer will die out due to the immune response overwhelming the trace amounts of cells. It also accurately show that if not enough chemotherapy treatments are given, the tumor burden returns to high levels rather quickly. 
+
+While it does not break down after 1 month like the immune model it does, however, show a concerning dependence on initial conditions. With a large initial tumor burden, the model shows that the burden will decrease under effects of the immune system alone, which runs counter to what is observed.
+
 
 \appendix
 \section{Definitions}
