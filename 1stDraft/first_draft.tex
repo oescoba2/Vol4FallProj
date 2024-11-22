@@ -4,7 +4,7 @@
 
 \usepackage{graphicx}
 \usepackage{amssymb, amsmath, amsthm}
-%\usepackage{places} %enables \FloatBarrier, which prevents figures and tables from going below it.
+\usepackage{places} %enables \FloatBarrier, which prevents figures and tables from going below it.
 %\usepackage{hyperref} %makes cross references into hyperlinks. 
 \input{commands}
 
@@ -91,7 +91,7 @@ Thus, our focus is to model the growth of a HER2 positive breast cancer in relat
 \section{Modeling}
 
 %% Finite Difference methods, feel free to edit or place where you would like --Rebecca
-In solving the original Gompertz model, finite difference methods were used because of their simplicity yet relative accuracy. The local truncation error for Forward Euler can be found as follows $\tau_i = |T’(t_i) - \frac{T(t_i + h) - T(t_i)}{h}|$  where $T(t_i)$ is the actual solution at time $i$. Using Taylor Series, we can expand this to $|T’(t_i) - \frac{T(t_i) + hT’(t_i) + h^2T’’(t_i) + h^3T’’’(t_i) + O(h^4) - T(t_i)}{h}|$ which simplifies to $|-hT’’(t_i) - h^2T’’’(t_i) + O(h^3)| = O(h)$. So although quick to code and compute, there is a relatively large error term. 
+In solving the original Gompertz model, finite difference methods were used because of their simplicity yet relative accuracy. The local truncation error for Forward Euler can be found as follows $\tau_i = |T^\prime(t_i) - \frac{T(t_i + h) - T(t_i)}{h}|$  where $T(t_i)$ is the actual solution at time $i$. Using Taylor Series, we can expand this to $\Bigl |T^\prime(t_i) - \frac{T(t_i) + hT^\prime(t_i) + h^2T^\dprime(t_i) + h^3T^{\prime\prime\prime}(t_i) + O(h^4) - T(t_i)}{h}\Bigr |$ which simplifies to $|-hT^\dprime(t_i) - h^2T^{\prime \prime \prime}(t_i) + O(h^3)| = O(h)$. So although quick to code and compute, there is a relatively large error term. 
 %% End Finite Difference methods
 
 The \textit{Gompertz} model is a logistic model that was created to describe the growth of human mortality in 1825 by Benjamin Gompertz.
@@ -148,6 +148,17 @@ D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 
 %% Third Section
 \section{Results}
+
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{./images/image.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{The growth of breast cancer growth as modeled by
+}
+\label{fig:MeanSquaredError} % for automatic cross referencing
+\end{figure}
+
+
 
 Clearly and succinctly state and describe the conclusions that you can draw from the model you have achieved (or the many failed attempts). Does your model(s) perform well quantitatively or qualitatively?
 
