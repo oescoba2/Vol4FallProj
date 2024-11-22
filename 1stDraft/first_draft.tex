@@ -146,25 +146,23 @@ This paper models the populations of Tumor cells, effective CD8+ T cells, and ef
 	\end{equation}
 
 	Here we provide an explanation of each component of the differential equations, where the constants are defined in the appendix. \\
-In equation (4) the term $aT(1-b)$ is the logistic growth of the tumor. The term $cNT$ is the number of tumor cells killed in the interaction between tumor cells and NK cells. And D is the number of tumor cells killed in the interaction between CD8+ cells and tumor cells. \\
-In equation (5) the term $\sigma$ is the constant inflow of NK cells, the term $fN$ is the number of NK cells that naturally die every day, The term $\frac{gT^2}{h + T^2}N$ is the number of NK cells that are recruited to fight the tumor, and the term $pNT$ is the number of NK cells deactivated by the tumor cells.\\
-In equation (6) the term $mL$ is the number of CD8+ cells that naturally die. The term $\frac{jD^2}{k + D^2}L$ is the number of CD8+ cells recruited to fight cancer. The term $qLT$ is the number of CD8+ cells deactivated by tumor cells. The term $rNT$ is the number of CD8+ cells produced after NK cells die to Tumor cells.\\
+In equation \eqref{eq: dT} the term $aT(1-b)$ is the logistic growth of the tumor. The term $cNT$ is the number of tumor cells killed in the interaction between tumor cells and NK cells. And D is the number of tumor cells killed in the interaction between CD8+ cells and tumor cells. \\
+In equation \eqref{eq: dN} the term $\sigma$ is the constant inflow of NK cells, the term $fN$ is the number of NK cells that naturally die every day, The term $\frac{gT^2}{h + T^2}N$ is the number of NK cells that are recruited to fight the tumor, and the term $pNT$ is the number of NK cells deactivated by the tumor cells.\\
+In equation \eqref{eq: dL} the term $mL$ is the number of CD8+ cells that naturally die. The term $\frac{jD^2}{k + D^2}L$ is the number of CD8+ cells recruited to fight cancer. The term $qLT$ is the number of CD8+ cells deactivated by tumor cells. The term $rNT$ is the number of CD8+ cells produced after NK cells die to Tumor cells.\\
 
 
 The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of NK and CD8+ cells. This results in the following system of equations.
 
 \begin{equation} \label{eq1}
-\frac{dT}{dt} = aT(1-bT) - cNT - D 
+\frac{dT}{dt} = aT(1-bT) - cNT - D \label{eq: dT},
 \end{equation}
 \begin{equation} \label{eq2}
-\frac{dN}{dt} = \sigma - fN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t}
+\frac{dN}{dt} = \sigma - fN +\frac{gT^2}{h + T^2}N - pNT - Nf \mu e^{-\gamma t} \label{eq: dN},
 \end{equation}
 \begin{equation} \label{eq3}
-\frac{dL}{dt} = - mL +\frac{jD^2}{k + D^2}L - qLT + rNT
+\frac{dL}{dt} = - mL +\frac{jD^2}{k + D^2}L - qLT + rNT \label{eq: dL},
 \end{equation}
-\begin{equation} \label{eq4}
-D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
-\end{equation}
+where $D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T$
 
 
  The primary aspect of the project is the modeling of the chosen phenomenon. If your group's repeated attempts resulted in abject failure, or your group succeeded, detail them in this section. Be sure to account for the various attempted models and why they were not appropriate. Include numerical simulations for each attempted model.  Reference figures and plots, like Figure~\ref{fig:MeanSquaredError}.
@@ -182,7 +180,7 @@ D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \label{fig:MeanSquaredError} % for automatic cross referencing
 \end{figure}
 
-Here we plot the differential equations (4-6). 
+Here we plot the differential equations of the immune system. 
 We get our initial values from a plot in the paper where we got the differential equations. 
 In the paper published, the populations only go to about 35 days. 
 Below we've created similar plots, but as we increase the time beyond 35 days, 
