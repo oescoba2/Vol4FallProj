@@ -125,8 +125,8 @@ Adding \eqref{eq: chemo} to our growth in \eqref{eq: gompertz} gives
 For our purposes, we chose to go with a chemotherapy treatment plan of one dose every two weeks for a total of 14 doses. 
 
 
-
-The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of immune cells. This results in the following system of equations.
+%edited
+The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. The number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the current number of cells of each type. This results in the following system of equations.
 
 \begin{equation} \label{eq1}
 \frac{\diff T}{\diff t} = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) - f \mu e^{-\gamma t} - n_{kr}NT - D 
@@ -141,7 +141,8 @@ The combination of the two models requires some thought. The Gompertz-Chemo inte
 D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \end{equation}
 
-The constants and form of the equation should be familiar, as they are taken directly from the above equations. The 
+The constants and form of the equation should be familiar, as they are taken directly from the above equations. 
+%end edited
 
 
  The primary aspect of the project is the modeling of the chosen phenomenon. If your group's repeated attempts resulted in abject failure, or your group succeeded, detail them in this section. Be sure to account for the various attempted models and why they were not appropriate. Include numerical simulations for each attempted model.  Reference figures and plots, like Figure~\ref{fig:MeanSquaredError}.
@@ -166,7 +167,22 @@ Clearly and succinctly state and describe the conclusions that you can draw from
 %%Fourth Section
 \section{Analysis/Conclusions}
 
-Discuss the appropriateness of the techniques/methods you employed in modeling. Did your group appropriately model the chosen phenomenon? If not, what different steps could you have taken if you had more time? What did you learn about the techniques/method that were used in the group project? If your model was successful, what additional insight/conclusions could you obtain from it? For instance, if you had a successfully modified SIR model, how might it affect different government policy? If you had a successful model for the spread of inaccurate information on social media, how might it be implemented to help reduce the spread of inaccurate information?
+In modeling the immune system alone, we had some success, but the dynamics we were able to capture don't work well on a long enough time scale. Specifically, after about 35 days we start to see negative populations and discontinuous changes in population. While we may be able to gain some insight on the interaction between cancer cells, Natural Killer cells, and CD8+ cells, we have an unreasonably short time scale that our model works on. 
+
+
+
+
+%new
+
+The overall model has some unique strengths and weaknesses as well. As shown above, it predicts that after a certain number of chemotherapy treatments the cancer will die out due to the immune response overwhelming the trace amounts of cells. It also accurately show that if not enough chemotherapy treatments are given, the tumor burden returns to high levels rather quickly. 
+
+While it does not break down after 1 month like the immune model it does, however, show a concerning dependence on initial conditions. With a large initial tumor burden, the model shows that the burden will decrease under effects of the immune system alone, which runs counter to what is observed.
+
+%end new
+
+Weaknesses
+Sensitivity to initial conditions
+Some question of constants
 
 
 
