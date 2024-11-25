@@ -102,7 +102,6 @@ Lastly, our tumor growth modeling focused on a sigmoidal relationship given by t
 
 
 %% End Finite Difference methods
-
 The \textit{Gompertz} model is a logistic model that was created to describe the growth of human mortality in 1825 by Benjamin Gompertz.
 In particular, the ODE is given by
 \begin{equation}
@@ -138,7 +137,8 @@ Notice how the Gompertz model slows its growth first and more significantly than
 On the other hand, the logistic growth is much more aggressive after its inflection point.
 To see why, take the derivative of \eqref{eq: gompertz} and set it equal to 0, this gives us that  the inflection point of the Gompertz model is at $\frac{T_{\max}}{e}$.
 This is the point when 36.8\% of the carrying capacity has been reached compared to the inflection point of the logistic model that occurs at half the carrying capacity.
-Given these characteristics, the Gompertz model is a popular and good choice for modeling tumor growth.
+As stated earlier, we wanted a model that exhibits an exponential growth but also has a slow convergence to the carrying capacity.
+This is why the Gompertz is a good modeling choice than other given models\ \cite{LairdGompertz}. 
 
 For chemotherapy effects, seeing that models are derived as exponential decays of the drug-dose and are dependent on the type of the type of drug administered as well as the percentage of cancer killed at a specific cell-state, we opted to work with the model proposed by Bethge et al (which is similar to the one given by de Pillis and Radunskaya \eqref{eq: Pillis}). The chemotherapy differential expression is 
 \begin{equation}
@@ -158,11 +158,11 @@ For our purposes, we chose to go with a chemotherapy treatment plan of one dose 
 
 
 The basis of our immune system modeling comes from a published paper in Cancer Research Volume 65 Issue 17 titled, 
-"A Validated Mathematical Model of Cell-Mediated Immune Response to Tumor Growth"(Pillis, Radunskaya, Wiseman)
-This paper focuses on the interaction between cancer cells, NK cells, and CD8+ T cells(See appendix). 
+``A Validated Mathematical Model of Cell-Mediated Immune Response to Tumor Growth."
+This paper focuses on the interaction between cancer cells, NK cells, and CD8$^+$ T cells(See appendix). 
 While the interaction between cancer cells and tumors goes far beyond the influence of these two types of cells, 
 according to the NIH, these are the two cell types that "... directly act on the breast cancer cells and promote antitumor immunity through destroying the cells"(Amens, Jensen N et al.)
-This paper models the populations of Tumor cells, effective CD8+ T cells, and effective NK cells(see appendix) with the following Differential Equations:
+This paper models the populations of Tumor cells, effective CD8$^+$ T cells, and effective NK cells(see appendix) with the following Differential Equations:
 
 \begin{equation} 
 	\frac{\diff T}{\diff t} = aT(1-bT) - N_{KR}NT - D \label{eq:dT}
@@ -180,15 +180,15 @@ This paper models the populations of Tumor cells, effective CD8+ T cells, and ef
 We give a more in depth breakdown and definition of the constants are defined in\ Appendix \ref{appendix: models}.
 In equation \eqref{eq:dT} the term $aT(1-b)$ is the logistic growth of the tumor.
 The term $cNT$ is the number of tumor cells killed in the interaction between tumor cells and NK cells.
-D is the number of tumor cells killed in the interaction between CD8+ cells and tumor cells.
+D is the number of tumor cells killed in the interaction between CD8$^+$ cells and tumor cells.
 In equation \eqref{eq:dN}, the term $\sigma$ is the constant inflow of NK cells, the term $fN$ is the number of NK cells that naturally die every day, the term $\frac{gT^2}{h + T^2}N$ is the number of NK cells that are recruited to fight the tumor and is related to Michaelis-Menten kinetics, and the term $pNT$ is the number of NK cells deactivated by the tumor cells.
-For equation \eqref{eq:dL} the term $mL$ is the number of CD8+ cells that naturally die.
-The term $\frac{jD^2}{k + D^2}L$ is the number of CD8+ cells recruited to fight cancer, also related to  Michaelis-Menten kinetics.
-The term $qLT$ is the number of CD8+ cells deactivated by tumor cells.
-Lastly, the term $rNT$ is the number of CD8+ cells produced after NK cells die to Tumor cells.
+For equation \eqref{eq:dL} the term $mL$ is the number of CD8$^+$ cells that naturally die.
+The term $\frac{jD^2}{k + D^2}L$ is the number ofCD8$^+$ cells recruited to fight cancer, also related to  Michaelis-Menten kinetics.
+The term $qLT$ is the number of CD8$^+$ cells deactivated by tumor cells.
+Lastly, the term $rNT$ is the number of CD8$^+$ cells produced after NK cells die to Tumor cells.
 
 
-The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8+ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8+ cells affected by the chemotherapy is proportional to \eqref{eq: chemo} and the number of NK and CD8+ cells. This results in the following system of equations.
+The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8$^+$ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8$^+$ cells affected by the chemotherapy is proportional to\ \eqref{eq: chemo} and the number of NK and CD8$^+$ cells. This results in the following system of equations.
 
 \begin{equation} \label{eq:unifiedmodel}
 \frac{\diff T(t)}{\diff t} = k_g T(t) \ln \biggl(\frac{T_{\max}}{T(t)} \biggr) - f \mu e^{-\gamma t} - n_{kr}N(t)T(t) - D 
@@ -206,16 +206,28 @@ D = d\frac{\Bigl(\frac{L(t)}{T(t)}\Bigr)^\lambda}{s + \Bigl(\frac{L(t)}{T(t)}\Bi
 The constants and form of the equation should be familiar, as they are taken directly from the above equations. 
 The fully integrated cancer model with both chemotherapy and immune cells predicts unreasonable results for chemotherapy without additional adjustments. For reasonable initial tumor sizes, one or two rounds of chemotherapy almost immediately kill the tumor. In practice, patients undergo 5-8 rounds of chemotherapy on average before showing signs of remission. Such problematic behavior is likely a result of the immune model, which as presented in a previous paper does not generalize well past 30 days. Thus, we tweaked our initial full model to produce qualitatively sound results.
 
-In order to fix the full tumor growth model qualitatively, we introduced a term in the differential equations for both CD8 cells and natural killer cells. Scientific papers have produced different conclusions on whether chemotherapy inhibits CD8 and natural killer cells, but we chose to incorporate a term which inhibits CD8 and natural killer cells in proportion to their interactions with the chemotherapy drug. We altered this new parameter until simulations prediction at least 5 rounds of chemotherapy before remittance. 
+In order to fix the full tumor growth model qualitatively, we introduced a term in the differential equations for both CD8 cells and natural killer cells. Scientific papers have produced different conclusions on whether chemotherapy inhibits CD8$^+$ and natural killer cells, but we chose to incorporate a term which inhibits CD8$^+$ and natural killer cells in proportion to their interactions with the chemotherapy drug. We altered this new parameter until simulations prediction at least 5 rounds of chemotherapy before remittance. 
 
+To model the tumor, we first created a general function that would compute the initial conditions of the tumor.
+Specifically, we called $t=0$ to be the time when a tumor should be of sufficient that a person, medical practice, or immune system should be able to identify the cancer.
+While it is unknown why cancer can go undetected completely from the immune system, there are estimates for a tumor burden that should be recognizable by the immune system. 
+Specifically, Caley and Jones stated that when cancer is detectable there are about $10^8$ to $10^9$ tumor cells in the body\ \cite{CALEY2012186}. 
+Our modeling started about an order of magnitude less from the given estimate, that being a tumor burden of $T_o = 9^8$ (see Figure~\ref{fig:FullODE}).
+
+In the paper of Sopik and Narod, they estimated the probability of dying from breast cancer as a function of the size of the tumor and found that, while some primary tumor sizes can be as big as 150$mm$ in diameter, the mortality probability plateaus starting with tumors with a diameter of  91$mm$\ \cite{SopikTumorSize}.
+Specifically, the mortality probability of tumors with a  diameter of 150$mm$ is about $64.1\%$ whereas tumors with a diameter of size ranging from $91-100 mm$ exhibited a $60\%$ mortality probability.
+Thus, there is not much of an increase in chance of death with a bigger tumor size.
+Hence, our $T_{\max}$ became the number of cells found in a tumor of $mm$ in diameter.
+Larsen et al found that, on average and in a highly dense colorectal carcinoma, there is about 35$mm^2$  of tumor tissue\ \cite{LarsenStineNkCellsRatio}.
 
 %% Third Section
 \section{Results}
 
-Here we have a forward Euler numerical method approximating the tumor burden with and without a single session of chemotherapy. 
-We see that without chemotherapy the cancer grows exponentially. 
-On the other hand, after a session of chemo, 
-we see a sharp decline followed by a continuation of exponential growth
+
+%Here we have a forward Euler numerical method approximating the tumor burden with and without a single session of chemotherapy. 
+%We see that without chemotherapy the cancer grows exponentially. 
+%On the other hand, after a session of chemo, 
+%we see a sharp decline followed by a continuation of exponential growth
 
 %%\begin{figure}[h!]
 %%\begin{center} %Put your images in a figure like this
@@ -233,9 +245,15 @@ we see a sharp decline followed by a continuation of exponential growth
 \caption{The growth of breast cancer growth as modeled by \eqref{eq:unifiedmodel} }
 \label{fig:FullODE} % for automatic cross referencing
 \end{figure}
+
+ 
+It was part of our interest to see if our model would show a tumor growing without any intervention from the immune system.
+This is in part why we picked our initial value of $T_o$.
+As show in Figure~\ref{fig:FullODE}, our model does exhibit a growth, slow and leveling off to a $T_max$, prior to the beginning of a chemotherapy treatment plan. 
+
 To solve the equation given by\ \eqref{eq:unifiedmodel}, we used \begin{verbatim} scipy.integrate.solve_ivp \end{verbatim}
 that use the explicit Runge-Kutta method of order 5(4) which assumes an accuracy of the fourth-order but takes steps using a fifth-order accurate formula.
-In particular, we focused on using a tumor burden of $9\times10^9$ which is an order of magnitude less than what [CITE] states being clearly identifiable by medicine and even the immune system itself. 
+
 Moreover, we chose to go with a chemotherapy treatment plan of one dose every four weeks (i.e.\ 28 days) for a total of 14 doses.
 Specifically, those doses started about 60 days after the initial discovery of tumor.
 The results are shown in\ Figure~\ref{fig:FullODE}.
@@ -277,6 +295,12 @@ we start to see some problems, which we will address in the analysis/conclusions
 
 %%Fourth Section
 \section{Analysis/Conclusions}
+
+Weakness: cannot model properly for bigger Tmax anything from 50mm on
+
+One of the hard aspects was that for certain values our modeling would show quite the decline.
+ADD TODO graph in supplemental information.
+These would 
 
 Our initial numerical method approximating the tumor burden with and without chemo showed the sharp decline that a chemo session causes in the tumor cell population. 
 On a long enough time scale we would see a plateau in the chemo population growth as it reaches its carrying capacity. 
@@ -414,6 +438,9 @@ of itself
 		\end{eqnarray}
 \end{itemize}
 
+\section{Supplemental Graphs}
+\label{appendix:graphs}
+In this section, we give more graphs that help our analysis as supplementary information to the main points and graphs given in the paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography below
