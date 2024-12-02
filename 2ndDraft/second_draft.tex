@@ -4,7 +4,7 @@
 
 \usepackage{graphicx}
 \usepackage{amssymb, amsmath, amsthm}
-\usepackage{places}
+%\usepackage{places}
 \usepackage{wrapfig,floatrow}
 \usepackage{varwidth, caption} %enables \FloatBarrier, which prevents figures and tables from going below it.
 %\usepackage{hyperref} %makes cross references into hyperlinks. 
@@ -110,7 +110,7 @@ In particular, the ODE is given by
 where $k_g$ is a growth constant of the tumor, $T$ is the total number of cancer cells, and $t$ is days.
 The solution to the ODE is of sigmoidal nature.
 Like the logistic growth model \eqref{eq: logistic}, the Gompertz model starts off with a quasi-exponential growth at the beginning that is short lived.
-However, unlike the logistic model, the Gompertz model slowly converges to the carrying capacity of that a tumor can have with available nutrients.
+However, unlike the logistic model, the Gompertz model slowly converges to the carrying capacity of what a tumor can have with available nutrients.
 Figure~\ref{fig:odeModels} shows how the Gompertz model differs from that of other models used for tumor growth.
 
 \begin{wrapfigure}[17]{R}{9cm}
@@ -133,14 +133,14 @@ Figure~\ref{fig:odeModels} shows how the Gompertz model differs from that of oth
 %%\caption{Tumor Burden for various growth functions}
 %%\label{fig:growth} % for automatic cross referencing
 %%\end{figure}
-Notice how the Gompertz model slows its growth first and more significantly than a logistic model while still converging, slowly, towards the carrying capacity.
-On the other hand, the logistic growth is much more aggressive after its inflection point.
+Notice how the Gompertz model slows its growth first and more significantly than a logistic model while still converging towards the carrying capacity.
+The logistic growth, on the other hand, is much more aggressive after its inflection point.
 To see why, take the derivative of \eqref{eq: gompertz} and set it equal to 0, this gives us that  the inflection point of the Gompertz model is at $\frac{T_{\max}}{e}$.
 This is the point when 36.8\% of the carrying capacity has been reached compared to the inflection point of the logistic model that occurs at half the carrying capacity.
 As stated earlier, we wanted a model that exhibits an exponential growth but also has a slow convergence to the carrying capacity.
-This is why the Gompertz is a good modeling choice than other given models\ \cite{LairdGompertz}. 
+This is why the Gompertz is a better modeling choice than other given models\ \cite{LairdGompertz}. 
 
-For chemotherapy effects, seeing that models are derived as exponential decays of the drug-dose and are dependent on the type of the type of drug administered as well as the percentage of cancer killed at a specific cell-state, we opted to work with the model proposed by Bethge et al (which is similar to the one given by de Pillis and Radunskaya \eqref{eq: Pillis}). The chemotherapy differential expression is 
+For chemotherapy effects, seeing that models are derived as exponential decays of the drug-dose and are dependent on the type of drug administered as well as the percentage of cancer killed at a specific cell-state, we opted to work with the model proposed by Bethge et al (which is similar to the one given by de Pillis and Radunskaya \eqref{eq: Pillis}). The chemotherapy differential expression is 
 \begin{equation}
 	f \mu c(t) T, c(t) = e^{-\gamma t} \label{eq: chemo},
 \end{equation}
@@ -156,13 +156,7 @@ Adding \eqref{eq: chemo} to our growth in \eqref{eq: gompertz} gives
 \end{equation}
 For our purposes, we chose to go with a chemotherapy treatment plan of one dose every two weeks for a total of 14 doses. 
 
-
-The basis of our immune system modeling comes from a published paper in Cancer Research Volume 65 Issue 17 titled, 
-``A Validated Mathematical Model of Cell-Mediated Immune Response to Tumor Growth."
-This paper focuses on the interaction between cancer cells, NK cells, and CD8$^+$ T cells(See appendix). 
-While the interaction between cancer cells and tumors goes far beyond the influence of these two types of cells, 
-according to the NIH, these are the two cell types that "... directly act on the breast cancer cells and promote antitumor immunity through destroying the cells"(Amens, Jensen N et al.)
-This paper models the populations of Tumor cells, effective CD8$^+$ T cells, and effective NK cells(see appendix) with the following Differential Equations:
+Having now considered chemotherapy, we opted to also include the influence of the immune system on the tumor burden of a patient. The basis of our immune system modeling comes from an already published model which focuses on the interaction between cancer cells, NK cells, and CD8$^+$ T-cellsn \cite{Immune}. While there are many more cells that influence tumor burden, these are the two cells that act directly on breast cancer cells \cite{Amens21}. In the following differential equations, T is the tumor cell population, N is the NK cell population, and L is the CD8$^+$ T-cells population. The changes of these populations are modeled as
 
 \begin{equation} 
 	\frac{\diff T}{\diff t} = aT(1-bT) - N_{KR}NT - D \label{eq:dT}
@@ -173,19 +167,19 @@ This paper models the populations of Tumor cells, effective CD8$^+$ T cells, and
 \begin{equation} \label{eq:dL}
 	\frac{\diff L}{\diff t} = - mL +\frac{jD^2}{L_R + D^2}L - qLT + rNT
 \end{equation}
-\begin{equation} \label{eq: eq4}
+\begin{equation} \label{eq:D}
 	D = d\frac{(L/T)^\lambda}{s + (L/T)^\lambda}T
 \end{equation}
 
-We give a more in depth breakdown and definition of the constants are defined in\ Appendix \ref{appendix: models}.
-In equation \eqref{eq:dT} the term $aT(1-b)$ is the logistic growth of the tumor.
-The term $cNT$ is the number of tumor cells killed in the interaction between tumor cells and NK cells.
-D is the number of tumor cells killed in the interaction between CD8$^+$ cells and tumor cells.
-In equation \eqref{eq:dN}, the term $\sigma$ is the constant inflow of NK cells, the term $fN$ is the number of NK cells that naturally die every day, the term $\frac{gT^2}{h + T^2}N$ is the number of NK cells that are recruited to fight the tumor and is related to Michaelis-Menten kinetics, and the term $pNT$ is the number of NK cells deactivated by the tumor cells.
-For equation \eqref{eq:dL} the term $mL$ is the number of CD8$^+$ cells that naturally die.
-The term $\frac{jD^2}{k + D^2}L$ is the number ofCD8$^+$ cells recruited to fight cancer, also related to  Michaelis-Menten kinetics.
-The term $qLT$ is the number of CD8$^+$ cells deactivated by tumor cells.
-Lastly, the term $rNT$ is the number of CD8$^+$ cells produced after NK cells die to Tumor cells.
+Due to the complexity and number of constants, we define and quantify them in \ Appendix \ref{appendix: models}, but we will break down the contribution of each component. 
+
+In equation \eqref{eq:dT}, the tumor cell population increases by a single component, $aT(1-b)$, which is the logistic growth  of the tumor. The remaining two terms $N_{KR}NT$ and $D$ signify number of  tumor cells killed by NK cells and CD8$^+$ cells, respectively.
+
+In equation \eqref{eq:dN}, the NK cell population increases due to two components. One is the constant inflow of cells independent from tumor influence, denoted $\sigma$. And the other is the increase of NK cells due to the tumor's presence. This term takes the form of a Michaelis-Menten kinetics equation, and is denoted $\frac{gT^2}{h + T^2}N$. The remaining two terms of this equation are decreases in NK cell population. The first being natural NK cell death, denoted $N_dN$, and the last one being he number of NK cells deactivated by tumor cells, denoted $pNT$.
+
+For equation \eqref{eq:dL} we again have two components which are loses in CD8$^+$ T-cells population, the terms $mL$ and $qLT$. The first of which is the number of naturally dying cells, and the second is the number deactivated by tumor cells. We also find two components contributing to an increase in CD8$^+$ T-cells, the first of which being $\frac{jD^2}{k + D^2}L$, the number of CD8$^+$ cells recruited to fight cancer, again in the form of a Michaelis-Menten kinetics equation. Lastly, the term $rNT$ models the phenomenon where CD8$^+$ cells are produced after an NK cell is killed by a tumor cell. 
+
+
 
 
 The combination of the two models requires some thought. The Gompertz-Chemo integrated model for tumor burden can be added in place of the logistic growth factor in the immune system model, but the effects of the chemotherapy on the immune cells cannot be ignored. Although sources were inconclusive on whether the chemotherapy directly killed the NK and CD8$^+$ cells, it is known that all cells are negatively affected by the therapy. We make the assumption that the number of NK and CD8$^+$ cells affected by the chemotherapy is proportional to\ \eqref{eq: chemo} and the number of NK and CD8$^+$ cells. This results in the following system of equations.
