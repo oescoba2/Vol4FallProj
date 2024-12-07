@@ -73,8 +73,8 @@ Thus, a good model, depending on the cancer, should have a more specific interac
 If it is general, it suffices to show the interaction as whole.
 
 The modeling for tumor-immunological response typically look at relationship between \textit{natural killer} cells (NK) and \textit{cytotoxic T}-cells (CD8$^+$) (see\ \ref{appendix: defs}) and how they affect tumor growth.
-Although there are many other cells which contribute to an immune response, NK cells and CD8 cells are the only ones which directly kill the cancer cells in breast cancers\ \cite{Amens21}.
-The CD8+ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8$^+$, and cancer cells. 
+Although there are many other cells which contribute to an immune response, NK cells and CD8$^+$ cells are the only ones which directly kill the cancer cells in breast cancers\ \cite{Amens21}.
+The CD8$^+$ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8$^+$, and cancer cells. 
 Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun.
 Because of the immunocomprimising effects of radiation and chemotherapy, the body's ability to fight tumors naturally will decrease, leading to interesting dynamics of the cell populations.
 Thus, we expect to see some description showing how the NK or CD8$^+$ cells become inhibited or die off as chemotherapy is introduced.
@@ -173,7 +173,7 @@ Adding \eqref{eq: chemo} to our growth in \eqref{eq: gompertz} gives
 
 Due to the complexity and number of constants, we define and quantify them in Appendix\ \ref{appendix: models}, but we will break down the system of immune ODEs. 
 In equation\ \eqref{eq:dT}, the tumor cell population increases by a single component, $aT(1-b)$, which is the logistic growth  of the tumor. The remaining two terms $N_{KR}NT$ and $D$ signify the proportion of tumor cells killed by NK cells and CD8$^+$ cells, respectively.
-In equation\ \eqref{eq:dN}, the NK cell population increases due to two components. One is the constant inflow of cells independent from tumor influence, denoted $\sigma$, and the other is the increase of NK cells due to the tumor's presence. This term takes the form of a Michaelis-Menten kinetics equation, and is denoted $\frac{gT^2}{h + T^2}N$. The remaining two terms of this equation are decreases in NK cell population. The first being natural NK cell death, denoted $N_dN$, and the last one being he number of NK cells deactivated by tumor cells, denoted $pNT$.
+In equation\ \eqref{eq:dN}, the NK cell population increases due to two components. One is the constant inflow of cells independent from tumor influence, denoted $\sigma$, and the other is the increase of NK cells due to the tumor's presence. This term takes the form of a Michaelis-Menten kinetics equation, and is denoted $\frac{gT^2}{h + T^2}N$. The remaining two terms of this equation are decreases in NK cell population. The first being natural NK cell death, denoted $N_dN$, and the last one being the proportion of NK cells deactivated by tumor cells, denoted $pNT$.
 
 For equation\ \eqref{eq:dL}, we again have two components which are loses in CD8$^+$ T-cells population, the terms $mL$ and $qLT$. The first component is the proportion of naturally dying cells, and the second is the proportion deactivated by tumor cells. We also find two components contributing to an increase in CD8$^+$ T-cells, the first being $\frac{jD^2}{k + D^2}L$, the proportion of CD8$^+$ cells recruited to fight cancer, again in the form of a Michaelis-Menten kinetics equation. Lastly, the term $rNT$ models the phenomenon where CD8$^+$ cells are produced after an NK cell is killed by a tumor cell. 
 
@@ -316,7 +316,7 @@ The fully integrated cancer model with both chemotherapy and immune cells predic
 First, in analyzing our model, we use known mathematical methods to analyze its stability as an operator.
 The system is not linear, so we cannot simply take the eigenvalues of the operator. 
 We try to analyze the system by linearizing around the equilibrium solution. 
-The equilibrium solution that makes the most sense is where there are no cancer cells or CD8+ cells and a steady number of natural killer cells. 
+The equilibrium solution that makes the most sense is where there are no cancer cells or CD8$^+$ cells and a steady number of natural killer cells. 
 This corresponds to $T=0, L=0, N=\sigma/(N_d)$.   
 
 Some nuance is necessary as there are zeros in the denominators at this point, but a simple mathematical analysis shows that the limits do exist. 
@@ -399,7 +399,7 @@ we start to see some problems, which we will address in the analysis/conclusions
 \begin{center} %Put your images in a figure like this
 \includegraphics[scale=.6]{./images/forward_immune.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
-\caption{Various plots of the populations for different initial values}
+\caption{The Forward Euler method of each cell population generated for 2 sets of initial conditions}
 \label{fig:forward} % for automatic cross referencing
 \end{figure}
 
@@ -422,7 +422,7 @@ of itself
 	\item Remission: A decrease in or disappearance of signs and symptoms of cancer. In partial remission, some, but not all, signs and symptoms of cancer have disappeared. In complete remission, all signs and symptoms of cancer have disappeared, although cancer still may be in the body.
 	\item Treatment cycle: the regular and repeated interval of time between each new dose of a chemotherapy drug. A cycle comprises of a rest period to allow the body to heal from the effects until the new dose is given. This information was retrieved from the American Cancer Society and\ \cite{CALEY2012186}.
 	\item Tumor: an abnormal mass of tissue that forms when cells grow and divide more than they should or do not die when they should. Tumors may be \textit{benign} (not cancer) or \textit{malignant} (cancer). For this project, defined the tumor burden as the number of cancer cells in the body.
-	\item Tumor burden: the size of a tumor or number cancer cells. This is the total amount of cancer found in the body.
+	\item Tumor burden: the size of a tumor or number of cancer cells. This is the total amount of cancer found in the body.
         \item Natural Killer Cell (NK Cell): A type of immune cell that has granules (small particles) with enzymes that can kill tumor cells or cells infected with a virus. A natural killer cell is a type of white blood cel
 \end{itemize}
 
@@ -480,7 +480,7 @@ Here in is the $3\times 3$ Jacobian of our ODE system broken down by rows.
 				\begin{equation}
 					g(t) = h e^{-\gamma(t-n-\tau)} \label{eq:PanettaExpDec},
 				\end{equation}
-				where $g(t)$ is the effects of the chemotherapy drug, $\gamma$ is the decay of the drug, $n$ is number of doses, and $\tau$ is the period between doses.
+				where $g(t)$ is the effects of the chemotherapy drug, $\gamma$ is the decay of the drug, $n$ is the number of doses, and $\tau$ is the period between doses.
 				
 			\item Personalized treatment: Ophir Nave modeled a personalizable treatment plan as 
 				\begin{equation}
@@ -505,13 +505,13 @@ Here in is the $3\times 3$ Jacobian of our ODE system broken down by rows.
                    		 	\item $g = 2.5 \times 10^-2$ has units $\text{day}^{-1}$ is the max NK recruitment
                    		 	\item $h = 2.02 \times 10^7$ has units $\text{cell}^2$ is the steepness coefficient of the NK recruitment curve.
                    		 	\item $p = 1.00 \times 10^{-7}$ has units $\text{cell}^{-1}\text{day}^{-1}$ is the rate at which tumors incapacitate NK cells
-                   		 	\item $m = 2.00 \times 10^{-2}$ has units $\text{day}^{-1}$ is the natural death rate of CD8+ cells.
-                   		 	\item $j = 3.75 \times 10^{-2}$ has units $\text{day}^{-1}$ is the max CD8+ recruitment rate, and the constant $k = 2 \times 10^7$ has units $\text{cell}^2$ is the steepness coefficient of the CD8+ recruitment curve.
-                   		 	\item $L_R = 2 \times 10^7$ has units $\text{cell}^2$ is the steepness coefficient of the CD8+ recruitment curve.
-                   		 	\item $q = 3.42 \times 10^{-10}$ has units $\text{cell}^{-1}\text{day}^{-1}$ is the rate that tumors deactivate CD8+ cells.
-                   		 	\item $r =1.1 \times 10^{-7} $ has units $\text{cell}^{-1}\text{day}^{-1}$ is the rate at which those CD8+ cells are produced. 
-                    			\item $d = 5.80$ has units $\text{day}^{-1}$ is the saturation level of fractional tumor cell kill by CD8+ T cells
-                    			\item $s = 2.5 \times 10^{-1}$ has no units, and is the steepness of the curve which determines the Tumor vs. CD8+ cell competition. Lastly, \item $\lambda = 1.36$ has no units. 
+                   		 	\item $m = 2.00 \times 10^{-2}$ has units $\text{day}^{-1}$ is the natural death rate of CD8$^+$ cells.
+                   		 	\item $j = 3.75 \times 10^{-2}$ has units $\text{day}^{-1}$ is the max CD8$^+$ recruitment rate, and the constant $k = 2 \times 10^7$ has units $\text{cell}^2$ is the steepness coefficient of the CD8+ recruitment curve.
+                   		 	\item $L_R = 2 \times 10^7$ has units $\text{cell}^2$ is the steepness coefficient of the CD8$^+$ recruitment curve.
+                   		 	\item $q = 3.42 \times 10^{-10}$ has units $\text{cell}^{-1}\text{day}^{-1}$ is the rate that tumors deactivate CD8$^+$ cells.
+                   		 	\item $r =1.1 \times 10^{-7} $ has units $\text{cell}^{-1}\text{day}^{-1}$ is the rate at which those CD8$^+$ cells are produced. 
+                    			\item $d = 5.80$ has units $\text{day}^{-1}$ is the saturation level of fractional tumor cell kill by CD8$^+$ T cells
+                    			\item $s = 2.5 \times 10^{-1}$ has no units, and is the steepness of the curve which determines the Tumor vs. CD8$^+$ cell competition. Lastly, \item $\lambda = 1.36$ has no units. 
 				\end{itemize}
 			\item Alharbi \& Sham Rambely: their modeling equations looked at the interaction of tumor cells and the immune system, $I$, as a whole as well as normal cells , $N$, (non-immune, non-tumor cells). They described the relationships by (using a logistic growth for tumor $T$):
 				\begin{eqnarray}
