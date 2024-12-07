@@ -27,8 +27,44 @@ Place abstract here. The abstract summarizes in one paragraph the main question 
 %% First Section
 \section{Background/Motivation}
 
-%% First Section
-\section{Background/Motivation}
+Mathematical oncology employs math to study cancer.
+``It [serves] as a bridge between $\ldots$ the biologist, and the practicing clinician" (Dr. Rockne and MD Scott) \cite{IntroMathOnc}.
+Tumor growth modeling is an application of mathematical oncology, which seeks to understand and model the properties that govern cancer growth, and the relationship between cancer, treatment and the immune system.
+
+The purpose of tumor growth modeling is to: (1) develop an uninhibited tumor growth model, (2) model the results of external factors like immune response or treatment, and (3) model tumor and other immune resistance to treatments.
+Models measure \textit{tumor burden}, denoted $T$, (see\ \ref{appendix: defs} for definitions), as a function of time $t$.
+Commonly used models include linear, exponential, and logistic models (see\ \ref{appendix: models} for equations).
+However, these are not accurate to the growth of most observed cancers \ \cite{Steb23}, which involve a slow exponential rate of increase and a slow convergence to a maximal tumor burden.
+The purpose of these general growth models is to develop more personal cancer treatment to individuals.\ \cite{YinMoes}
+
+Most cancers are treated through a combination of surgery, chemotherapy, and radiation therapy.
+Surgery removes as much as the cancer as possible, but is unsuited for modeling because it creates discontinuities.
+Therefore, although surgery is the primary treatment for breast cancer, we will focus on modeling chemotherapy (see\ \ref{appendix: defs}) since it is the most common treatment supplement to surgery.
+
+Most models for tumor growth in response to chemotherapy show the effect of a single dose of chemotherapy on cells at specific cell-cycles and seek to model the resistance of a tumor to the given drug.
+A full chemotherapy treatment cycle includes a sum of multiple doses that decay over time, and may include sudden changes in the tumor growth as modeled by Nave\ \eqref{eq: NavePersonalChemo}.
+Ophir Nave described an interaction between the chemotherapy drug and both the immune system and cancer itself \ \cite{NAVE2022e09288}.
+An exponential decay of the drug best models the rapid effect that chemotherapy has on the tumor burden (e.g.\ \eqref{eq:PanettaExpDec}).
+Unfortunately, these models often ignore the effect of cancer treatment on other parts of the body, which we expect to have a similar response to cancer cells.
+Thus, we attempt to find an expression for chemotherapy that affects both tumors and the immune system.
+
+The immune system is the body's natural defense against foreign bacterias or other abnormal cells (including cancer cells), which includes many different cell types, of which we will focus on two.
+Most models, as in\ \ref{eq: dePillisTumorImmuno} or\ \ref{eq: AlharbiTumorImmuno}, look at the response of the entire immune system to cancer, rather than the contributions of each cell type.
+While working generally, it suffices to show the interaction as a whole, but as mentioned by de Pillis et. al, ``in some applications, it is not sufficient to represent the immune response with a single homogeneous population of effector killer cells\ \cite{dePillis2014461}."
+Thus, a good model for a certain type of cancer, should show interactions between the cells affecting that cancer.
+
+The immune system has many types of cells, but NK cells and CD8$^+$ cells alone kill breast cancer cells\ \cite{Amens21}.
+Hence modeling for tumor-immunological responses focuses on behavior of \textit{natural killer} cells (NK), which make up an innate immune system, and \textit{cytotoxic T}-cells (CD8$^+$), which form an adaptive immune system (see\ \ref{appendix: defs}).
+CD8$^+$ cells are trained to kill cancer by the NK cells, which forms a relation between NK, CD8$^+$, and cancer cells.
+
+Immune system and tumor interactions can be modeled by \textit{Michaelis-Menten kinetics} (see\ \ref{appendix: defs}), which models interactions, like immune system response to cancer cells, tumor cells affecting the immune system, or infection of normal cells by tumor cells\  \cite{math8081285}.
+Any model looking into the interaction of a tumor with the immune system should consider similar interactions to these.
+
+
+Given the difficulty of modeling tumor growth in general, the intricacies of chemotherapy, and the complexity of immune-tumor interactions, we can understand why creating a completely general model of any cancer is arduous.
+Thus, we narrow our focus and attempt a simpler model that follows the previous guidelines.
+Since the National Cancer Institute records it as having the most number of cases as of 2024, we decided to focus on breast cancer.
+Our tumor growth modeling consists of a Gompertz growth model with a specific neoadjuvent chemotherapy treatment, and an immune response given by NK and CD8$^+$ cells.
 
 
 %% Second Section 
