@@ -1,0 +1,756 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  5 DEC 2024 02:01
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**final_draft.tex
+(./final_draft.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsart.cls
+Document Class: amsart 2020/05/29 v2.20.6
+\linespacing=\dimen140
+\normalparindent=\dimen141
+\normaltopskip=\skip48
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen142
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen143
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count188
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count189
+\leftroot@=\count190
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count191
+\DOTSCASE@=\count192
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen144
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count193
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count194
+\dotsspace@=\muskip16
+\c@parentequation=\count195
+\dspbrk@lvl=\count196
+\tag@help=\toks18
+\row@=\count197
+\column@=\count198
+\maxfields@=\count199
+\andhelp@=\toks19
+\eqnshift@=\dimen145
+\alignsep@=\dimen146
+\tagshift@=\dimen147
+\tagwidth@=\dimen148
+\totwidth@=\dimen149
+\lineht@=\dimen150
+\@envbody=\toks20
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 397
+.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+\copyins=\insert252
+\abstractbox=\box53
+\listisep=\skip52
+\c@part=\count266
+\c@section=\count267
+\c@subsection=\count268
+\c@subsubsection=\count269
+\c@paragraph=\count270
+\c@subparagraph=\count271
+\c@figure=\count272
+\c@table=\count273
+\abovecaptionskip=\skip53
+\belowcaptionskip=\skip54
+\captionindent=\dimen151
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip55
+\thm@postskip=\skip56
+\thm@headsep=\skip57
+\dth@everypar=\toks27
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks28
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen152
+\Gin@req@width=\dimen153
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+
+! LaTeX Error: File `places.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+
+! LaTeX Error: File `commands.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/.tex File ignored)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count274
+\l__pdf_internal_box=\box54
+)
+(./final_draft.aux)
+\openout1 = `final_draft.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count275
+\scratchdimen=\dimen154
+\scratchbox=\box55
+\nofMPsegments=\count276
+\nofMParguments=\count277
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count278
+\MPscratchDim=\dimen155
+\MPnumerator=\count279
+\makeMPintoPDFobject=\count280
+\everyMPtoPDFconversion=\toks30
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+
+Class amsart Warning: Abstract should precede \maketitle in AMS document classe
+s; reported on input line 20.
+
+
+LaTeX Warning: Citation `IntroMathOnc' on page 1 undefined on input line 28.
+
+
+LaTeX Warning: Citation `YinMoes' on page 1 undefined on input line 38.
+
+
+LaTeX Warning: Citation `Steb23' on page 1 undefined on input line 44.
+
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation `NAVE2022e09288' on page 2 undefined on input line 54.
+
+
+LaTeX Warning: Citation `dePillis2014461' on page 2 undefined on input line 68.
+
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (26.1829pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/8 REBECCA GEE, HENRY FETZER, NEPHI SUYAMA, JOSEPH HUMPHERYS, OS
+CAR J. ESCOBAR 
+ []
+
+[2]
+
+LaTeX Warning: Citation `Amens21' on page 3 undefined on input line 73.
+
+
+LaTeX Warning: Citation `math8081285' on page 3 undefined on input line 83.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (86.2092pt too wide) has occurred while \output is active
+ \OT1/cmr/m/n/8 THE EFFECT OF CHEMOTHERAPY AND IMMUNOLOGICAL RESPONSE ON BREAST
+ CANCER GROWTH []
+ []
+
+[3]
+./final_draft.tex:98: Undefined control sequence.
+<argument> ...i) + hT^\prime (t_i) + h^2T^\dprime 
+                                                  (t_i) + h^3T^{\prime \prim...
+l.98 ...me\prime\prime}(t_i) + O(h^4) - T(t_i)}{h}
+                                                  \Bigr |$ which simplifies ...
+
+? 
+./final_draft.tex:98: Undefined control sequence.
+l.98 ...\Bigr |$ which simplifies to $|-hT^\dprime
+                                                  (t_i) - h^2T^{\prime \prim...
+
+? 
+
+LaTeX Warning: File `./images/logistic.pdf' not found on input line 102.
+
+
+./final_draft.tex:102: Package pdftex.def Error: File `./images/logistic.pdf' n
+ot found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 ...[width=\textwidth]{./images/logistic.pdf}
+                                                  
+? 
+./final_draft.tex:114: Undefined control sequence.
+<argument> \diff 
+                 T(t)
+l.114 	\frac{\diff T(t)}{\diff t}
+                                  = k_g T \ln \biggl(\frac{T_{\max}}{T} \big...
+
+? 
+./final_draft.tex:114: Undefined control sequence.
+<argument> \diff 
+                 t
+l.114 	\frac{\diff T(t)}{\diff t}
+                                  = k_g T \ln \biggl(\frac{T_{\max}}{T} \big...
+
+? 
+
+LaTeX Warning: Citation `Steb23' on page 4 undefined on input line 120.
+
+
+Overfull \hbox (26.1829pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/8 REBECCA GEE, HENRY FETZER, NEPHI SUYAMA, JOSEPH HUMPHERYS, OS
+CAR J. ESCOBAR 
+ []
+
+[4]
+./final_draft.tex:137: Undefined control sequence.
+<argument> \diff 
+                 T(t)
+l.137 	\frac{\diff T(t)}{\diff t}
+                                  = k_g T \ln \biggl(\frac{T_{\max}}{T} \big...
+
+? 
+./final_draft.tex:137: Undefined control sequence.
+<argument> \diff 
+                 t
+l.137 	\frac{\diff T(t)}{\diff t}
+                                  = k_g T \ln \biggl(\frac{T_{\max}}{T} \big...
+
+? 
+
+Overfull \hbox (86.2092pt too wide) has occurred while \output is active
+ \OT1/cmr/m/n/8 THE EFFECT OF CHEMOTHERAPY AND IMMUNOLOGICAL RESPONSE ON BREAST
+ CANCER GROWTH []
+ []
+
+[5]
+
+LaTeX Warning: Reference `eq: dT' on page 6 undefined on input line 163.
+
+
+LaTeX Warning: Reference `eq: dN' on page 6 undefined on input line 164.
+
+
+LaTeX Warning: Reference `eq: dL' on page 6 undefined on input line 165.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
+
+ []
+
+
+Overfull \hbox (2.3446pt too wide) in paragraph at lines 168--169
+[]\OT1/cmr/m/n/10.95 The com-bi-na-tion of the two mod-els re-quires some thoug
+ht. The Gompertz-
+ []
+
+./final_draft.tex:171: Undefined control sequence.
+<argument> \diff 
+                 T
+l.171 \frac{\diff T}{\diff t}
+                              = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) ...
+
+? 
+./final_draft.tex:171: Undefined control sequence.
+<argument> \diff 
+                 t
+l.171 \frac{\diff T}{\diff t}
+                              = k_g T \ln \biggl(\frac{T_{\max}}{T} \biggr) ...
+
+? 
+
+Overfull \hbox (26.1829pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/8 REBECCA GEE, HENRY FETZER, NEPHI SUYAMA, JOSEPH HUMPHERYS, OS
+CAR J. ESCOBAR 
+ []
+
+[6]
+./final_draft.tex:174: Undefined control sequence.
+<argument> \diff 
+                 N
+l.174 \frac{\diff N}{\diff t}
+                              = \sigma - n_dN +\frac{gT^2}{h + T^2}N - pNT -...
+
+? 
+./final_draft.tex:174: Undefined control sequence.
+<argument> \diff 
+                 t
+l.174 \frac{\diff N}{\diff t}
+                              = \sigma - n_dN +\frac{gT^2}{h + T^2}N - pNT -...
+
+? 
+./final_draft.tex:177: Undefined control sequence.
+<argument> \diff 
+                 L
+l.177 \frac{\diff L}{\diff t}
+                              = - mL +\frac{jD^2}{l_r + D^2}L - qLT + rNT - ...
+
+? 
+./final_draft.tex:177: Undefined control sequence.
+<argument> \diff 
+                 t
+l.177 \frac{\diff L}{\diff t}
+                              = - mL +\frac{jD^2}{l_r + D^2}L - qLT + rNT - ...
+
+? 
+./final_draft.tex:186: Missing $ inserted.
+<inserted text> 
+                $
+l.186 ... This corresponds to T=0, L=0, N=sigma/N_
+                                                  d.
+? 
+./final_draft.tex:188: Missing $ inserted.
+<inserted text> 
+                $
+l.188 
+      
+? 
+
+Overfull \hbox (599.71335pt too wide) in paragraph at lines 185--188
+\OT1/cmr/m/n/10.95 sponds to T=0, L=0, N=sigma/N$[]\OML/cmm/m/it/10.95 :Somenua
+nceisnecessaryastherearezerosinthedenominatorsatthispoint; butanalysisshowsthat
+thelimitsproperlyexist:WetaketheJacobianofthesystemofequations:$ 
+ []
+
+
+Overfull \hbox (145.98383pt too wide) detected at line 198
+[]\OML/cmm/m/it/10.95 J \OT1/cmr/m/n/10.95 = [] [] 
+ []
+
+
+Overfull \hbox (19.98137pt too wide) in paragraph at lines 200--201
+[]\OT1/cmr/m/n/10.95 Note that this can-not be eval-u-ated at our equi-lib-rium
+ so-lu-tion as log(Tmax/T)
+ []
+
+
+Overfull \hbox (86.2092pt too wide) has occurred while \output is active
+ \OT1/cmr/m/n/8 THE EFFECT OF CHEMOTHERAPY AND IMMUNOLOGICAL RESPONSE ON BREAST
+ CANCER GROWTH []
+ []
+
+[7]
+
+LaTeX Warning: File `./images/tumor_growth.pdf' not found on input line 251.
+
+
+./final_draft.tex:251: Package pdftex.def Error: File `./images/tumor_growth.pd
+f' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.251 ...ics[scale=0.6]{./images/tumor_growth.pdf}
+                                                   % Better to make them pdf...
+
+? 
+
+LaTeX Warning: File `./images/forward_immune.pdf' not found on input line 272.
+
+
+./final_draft.tex:272: Package pdftex.def Error: File `./images/forward_immune.
+pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.272 ...cs[scale=.6]{./images/forward_immune.pdf}
+                                                   % Better to make them pdf...
+
+? 
+
+Overfull \hbox (26.1829pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/8 REBECCA GEE, HENRY FETZER, NEPHI SUYAMA, JOSEPH HUMPHERYS, OS
+CAR J. ESCOBAR 
+ []
+
+[8]
+
+LaTeX Warning: File `./images/CD8_growth.pdf' not found on input line 280.
+
+
+./final_draft.tex:280: Package pdftex.def Error: File `./images/CD8_growth.pdf'
+ not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.280 ...phics[scale=0.6]{./images/CD8_growth.pdf}
+                                                   % Better to make them pdf...
+
+? 
+
+LaTeX Warning: File `./images/NK_growth.pdf' not found on input line 289.
+
+
+./final_draft.tex:289: Package pdftex.def Error: File `./images/NK_growth.pdf' 
+not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.289 ...aphics[scale=0.6]{./images/NK_growth.pdf}
+                                                   % Better to make them pdf...
+
+? 
+
+Overfull \hbox (86.2092pt too wide) has occurred while \output is active
+ \OT1/cmr/m/n/8 THE EFFECT OF CHEMOTHERAPY AND IMMUNOLOGICAL RESPONSE ON BREAST
+ CANCER GROWTH []
+ []
+
+[9]
+Overfull \hbox (1.05505pt too wide) in paragraph at lines 330--331
+[]\OT1/cmr/m/n/10.95 Adjuvent Chemother-apy: Chemother-apy ad-min-is-tered af-t
+er pri-
+ []
+
+
+Overfull \hbox (26.1829pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/8 REBECCA GEE, HENRY FETZER, NEPHI SUYAMA, JOSEPH HUMPHERYS, OS
+CAR J. ESCOBAR 
+ []
+
+[10]
+
+LaTeX Warning: Citation `LogKill' on page 11 undefined on input line 334.
+
+
+Overfull \hbox (13.6663pt too wide) in paragraph at lines 334--336
+[]\OT1/cmr/m/n/10.95 Log-kill Hy-poth-e-sis: when growth of a can-cer is ex-po-
+nen-tial|increasing
+ []
+
+./final_draft.tex:349: Undefined control sequence.
+<argument> \diff 
+                 T
+l.349 			\frac{\diff T}{\diff t}
+                                 = k,
+? 
+./final_draft.tex:349: Undefined control sequence.
+<argument> \diff 
+                 t
+l.349 			\frac{\diff T}{\diff t}
+                                 = k,
+? 
+./final_draft.tex:355: Undefined control sequence.
+<argument> \diff 
+                 T
+l.355 			\frac{\diff T}{\diff t}
+                                 = kT \label{eq: exp}
+? 
+./final_draft.tex:355: Undefined control sequence.
+<argument> \diff 
+                 t
+l.355 			\frac{\diff T}{\diff t}
+                                 = kT \label{eq: exp}
+? 
+./final_draft.tex:357: Undefined control sequence.
+<argument> \diff 
+                 T
+l.357 ...constant of $d$, $\frac{\diff T}{\diff t}
+                                                   = (k-d)T$
+? 
+./final_draft.tex:357: Undefined control sequence.
+<argument> \diff 
+                 t
+l.357 ...constant of $d$, $\frac{\diff T}{\diff t}
+                                                   = (k-d)T$
+? 
+./final_draft.tex:360: Undefined control sequence.
+<argument> \diff 
+                 T
+l.360 			\frac{\diff T}{\diff t}
+                                 = kT \biggl(1- \frac{T}{T_{\max}}\biggr)\la...
+
+? 
+./final_draft.tex:360: Undefined control sequence.
+<argument> \diff 
+                 t
+l.360 			\frac{\diff T}{\diff t}
+                                 = kT \biggl(1- \frac{T}{T_{\max}}\biggr)\la...
+
+? 
+
+Overfull \hbox (86.2092pt too wide) has occurred while \output is active
+ \OT1/cmr/m/n/8 THE EFFECT OF CHEMOTHERAPY AND IMMUNOLOGICAL RESPONSE ON BREAST
+ CANCER GROWTH []
+ []
+
+[11]
+./final_draft.tex:381: Undefined control sequence.
+l.381 					\mathscr
+                   {F} = \sum_{k=0}^n q(t-mk) \mathscr{H} (t-mk)e^{\frac{t-m...
+
+? 
+./final_draft.tex:381: Undefined control sequence.
+l.381 ...athscr{F} = \sum_{k=0}^n q(t-mk) \mathscr
+                                                  {H} (t-mk)e^{\frac{t-mk}{0...
+
+? 
+./final_draft.tex:383: Undefined control sequence.
+<recently read> \mathscr 
+                         
+l.383 ...nterval between treatments, and $\mathscr
+                                                  {H}$ a unit step function.
+? 
+
+Overfull \hbox (26.1829pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/8 REBECCA GEE, HENRY FETZER, NEPHI SUYAMA, JOSEPH HUMPHERYS, OS
+CAR J. ESCOBAR 
+ []
+
+[12]
+Overfull \hbox (5.5076pt too wide) in paragraph at lines 409--410
+[]\OT1/cmr/m/n/10.95 Alharbi & Sham Ram-bely: their mod-el-ing equa-tions looke
+d
+ []
+
+./final_draft.tex:412: Undefined control sequence.
+<argument> \diff 
+                 N
+l.412 						\frac{\diff N}{\diff t}
+                                    &= rN(1-\beta_1 N) - \eta NI - \gamma NT \\
+
+? 
+./final_draft.tex:412: Undefined control sequence.
+<argument> \diff 
+                 t
+l.412 						\frac{\diff N}{\diff t}
+                                    &= rN(1-\beta_1 N) - \eta NI - \gamma NT \\
+
+? 
+./final_draft.tex:413: Undefined control sequence.
+<argument> \diff 
+                 T
+l.413 						\frac{\diff T}{\diff t}
+                                    &= \alpha_1T(1-\alpha_2T) + \beta_2 NT -...
+
+? 
+./final_draft.tex:413: Undefined control sequence.
+<argument> \diff 
+                 t
+l.413 						\frac{\diff T}{\diff t}
+                                    &= \alpha_1T(1-\alpha_2T) + \beta_2 NT -...
+
+? 
+./final_draft.tex:414: Undefined control sequence.
+<argument> \diff 
+                 I
+l.414 						\frac{\diff I}{\diff t}
+                                    &= \sigma - \delta I _ \frac{\rho N I}{m...
+
+? 
+./final_draft.tex:414: Undefined control sequence.
+<argument> \diff 
+                 t
+l.414 						\frac{\diff I}{\diff t}
+                                    &= \sigma - \delta I _ \frac{\rho N I}{m...
+
+? 
+./final_draft.tex:420: Undefined control sequence.
+<argument> \diff 
+                 T
+l.420 						\frac{\diff T}{\diff t}
+                                    &= a_1T(1-b_1T) - c_2ET - c_3NT - k_2(1-...
+
+? 
+./final_draft.tex:420: Undefined control sequence.
+<argument> \diff 
+                 t
+l.420 						\frac{\diff T}{\diff t}
+                                    &= a_1T(1-b_1T) - c_2ET - c_3NT - k_2(1-...
+
+? 
+./final_draft.tex:421: Undefined control sequence.
+<argument> \diff 
+                 N
+l.421 						\frac{\diff N}{\diff t}
+                                    &= a_2(1-b-2N) - c_4NT - k_3 (1-e^{-u})\...
+
+? 
+./final_draft.tex:421: Undefined control sequence.
+<argument> \diff 
+                 t
+l.421 						\frac{\diff N}{\diff t}
+                                    &= a_2(1-b-2N) - c_4NT - k_3 (1-e^{-u})\...
+
+? 
+
+Overfull \hbox (86.2092pt too wide) has occurred while \output is active
+ \OT1/cmr/m/n/8 THE EFFECT OF CHEMOTHERAPY AND IMMUNOLOGICAL RESPONSE ON BREAST
+ CANCER GROWTH []
+ []
+
+[13]
+No file final_draft.bbl.
+
+./final_draft.tex:450: LaTeX Error: \begin{itemize} on input line 343 ended by 
+\end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450 \end{document}
+                    
+? 
+(./final_draft.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 343 (\begingroup)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 3209 strings out of 474116
+ 47563 string characters out of 5743681
+ 1941187 words of memory out of 5000000
+ 25402 multiletter control sequences out of 15000+600000
+ 566676 words of font info for 69 fonts, out of 8000000 for 9000
+ 1302 hyphenation exceptions out of 8191
+ 71i,12n,79p,695b,340s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on final_draft.pdf (13 pages, 253869 bytes).
+PDF statistics:
+ 127 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
