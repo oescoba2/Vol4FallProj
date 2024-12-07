@@ -33,7 +33,9 @@ One of the biggest application of mathematical modeling in oncology is tumor gro
 In mathematical oncology, tumor growth modeling seeks to understand and model the characteristics and dynamics that govern general cancer growth.
 Moreover, it seeks also to understand and model the relationship between cancer and the systems that fight against it as well as the response of the cancer itself to these systems.
 
-The primary main purpose of tumor growth modeling is to first develop a general tumor growth model in the absence of any intervention.
+
+The primary %%%HERE deleted main (redundant
+ purpose of tumor growth modeling is to first develop a general tumor growth model in the absence of any intervention.
 Secondarily, it seeks to model the response to external factors such as immunological response or treatment. 
 And thirdly, the modeling will then add tumor resistance and active fighting against any form of treatment be it from the immune system or other treatments.
 In the absence of any intervention, several models have been made to try to show the growth of a tumor, measured by \textit{tumor burden}, denoted $T$, (see\ \ref{appendix: defs} for definitions), as a function of time $t$.
@@ -48,7 +50,8 @@ Moreover, the logistic model\ \eqref{eq: logistic} converges too fast to the max
 As such, a need for a model that can firstly exhibit a slow exponential rate and then a slow convergence to the carrying capacity is preferred to others that only exhibit one of these two characteristics.
 
 When it comes to treatment, most cancers typically use a combination for surgery, chemotherapy, and radiation therapy for treatment.
-In breast cancer, surgery is the primary treatment which is not well suited for math modeling. 
+In breast cancer, surgery is the primary treatment which is not well suited for %%% HERE math->mathematical
+mathematical modeling. 
 Surgery removes as much as the cancer as possible so that any modeling growth would just have a sudden vertical drop in tumor burden at the time the surgery is removed causing discontinuities in the modeling.
 For breast cancer, chemotherapy, be it \textit{neoadjuvent} or \textit{adjuvent} (see Appendix\ \ref{appendix: defs}), is the most common treatment supplement to surgery, being the primary treatment.
 
@@ -57,13 +60,18 @@ Moreover, they also focus on the effects after one dose and not on a treatment p
 Ophir Nave did describe that whenever chemotherapy is introduced into a model the drug would interact with both the immune system and cancer itself\ \cite{NAVE2022e09288}.
 Moreover, it should also be some sort of summation of the dosage effects that wanes through the passage of time but may perhaps have a sudden and rapid change in the tumor growth as modeled by Nave in\ \eqref{eq: NavePersonalChemo}.
 
-Most models employ a sort exponential decay of the administered drug to the patient to get the rapid effect that a chemotherapy drug has on the tumor burden (e.g.\ \eqref{eq:PanettaExpDec}).
+Most models employ a sort of %%%HERE Added of
+exponential decay of the administered drug to the patient to get the rapid effect that a chemotherapy drug has on the tumor burden (e.g.\ \eqref{eq:PanettaExpDec}).
 These are also specific to a certain phase of the cell state, but despite their specificity, at times ignore the negative effects on the immune system.
 Further, the effect the drug has on the tumor burden is usually also attributed to only the drug itself and the effects, while at times minimal, of the immune system fighting the cancer is omitted.
-Given these characteristics, it is of interest to find an expression for the effect of chemotherapy that has a rapid change in tumor burden and either on all cells or at specific cell-states but also has an effect on the immune system.
+
+%%%Changed grammar of the sentence below
+Given these characteristics, it is of interest to find an expression for the effect of chemotherapy that has a rapid change in tumor burden either on all cells or at specific cell-states, as well as affecting the immune system.
 
 The immune system naturally patrols the body in search of foreign bodies to kill and prevent diseases.
-The patrolling and immediate responses are given by the innate immune system and helper response to anything missed by the immediate response as well as targeted response is handled primarily by the adaptive immune system (see\ \ref{appendix: defs}).
+The patrolling and immediate responses are handled %%%HERE changed from given
+by the innate immune system, %%%HERE Added comma
+ and helper response to anything missed by the immediate response as well as targeted response is handled primarily by the adaptive immune system (see\ \ref{appendix: defs}).
 This patrolling is not just for foreign bacteria but also abnormal cells such as cancer cells. 
 Majority of models, like those in\ \ref{eq: dePillisTumorImmuno} or\ \ref{eq: AlharbiTumorImmuno}, look at these two parts of the immune system as  a whole and its interaction with the tumor and normal cells.
 That is, they do not look at the specific immune cells interacting with the cancer other than the collective response of the immune system on tumor growth.
@@ -72,7 +80,8 @@ effector killer cells\ \cite{dePillis2014461}."
 Thus, a good model, depending on the cancer, should have a more specific interaction between the immune cells that deal with that cancer in particular and the cancer itself.
 If it is general, it suffices to show the interaction as whole.
 
-The modeling for tumor-immunological response typically look at relationship between \textit{natural killer} cells (NK) and \textit{cytotoxic T}-cells (CD8$^+$) (see\ \ref{appendix: defs}) and how they affect tumor growth.
+The modeling for tumor-immunological response typically looks %%%HERE Added s
+ at relationship between \textit{natural killer} cells (NK) and \textit{cytotoxic T}-cells (CD8$^+$) (see\ \ref{appendix: defs}) and how they affect tumor growth.
 Although there are many other cells which contribute to an immune response, NK cells and CD8$^+$ cells are the only ones which directly kill the cancer cells in breast cancers\ \cite{Amens21}.
 The CD8$^+$ cells are recruited to kill the cancer by the NK cells, and from this interaction arises a relation between the populations of the NK, CD8$^+$, and cancer cells. 
 Unfortunately, many of the models which examine the relationship between cancer and the immune system do not include analysis of the interactions which occur once chemotherapy has begun.
@@ -134,7 +143,8 @@ Figure~\ref{fig:odeModels} shows how the Gompertz model differs from that of oth
 %%\caption{Tumor Burden for various growth functions}
 %%\label{fig:growth} % for automatic cross referencing
 %%\end{figure}
-Notice how the Gompertz model slows its growth first and more significantly than a logistic model while still converging towards the carrying capacity.
+Notice how the Gompertz model slows its growth earlier %%%first -> earlier
+and more significantly than a logistic model while still converging towards the carrying capacity.
 The logistic growth, on the other hand, is much more aggressive after its inflection point.
 For the Gompertz model, take the derivative of \eqref{eq: gompertz} and set it equal to 0, this gives us that  the inflection point of the Gompertz model is at $\frac{T_{\max}}{e}$.
 This is the point when 36.8\% of the carrying capacity has been reached compared to the inflection point of the logistic model that occurs at half the carrying capacity.
@@ -145,7 +155,8 @@ This is why the Gompertz is a better modeling choice than other given models\ \c
 \begin{equation}
 	f \mu c(t) T, c(t) = e^{-\gamma t} \label{eq: chemo},
 \end{equation}
-where $\mu$ represents the drug sensitivity of cells (thereby implying drug effectiveness), $c(t)$ is the concentration of the given drug with a rate modeled by a decay constant $\gamma=\frac{\ln{2}}{t_{1/2}}$ after the half-life of the drug, and $f$ is is the proportion of cells that are in specific cell-cycle such that chemotherapy affects those cells specifically.
+where $\mu$ represents the drug sensitivity of cells (thereby implying drug effectiveness), $c(t)$ is the concentration of the given drug with a rate modeled by a decay constant $\gamma=\frac{\ln{2}}{t_{1/2}}$ after the half-life of the drug, and $f$ is %%%Deleted extra "is"
+the proportion of cells that are in specific cell-cycle such that chemotherapy affects those cells specifically.
 If the given drug affects all cells equally irrespective of cell cycle, then $f$ is equal to 1.
 
 The chemotherapy differential expression specifically models the rate of change, with respect to time, of the death or removal of tumor cells by the given drug.
