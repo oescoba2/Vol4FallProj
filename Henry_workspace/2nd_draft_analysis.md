@@ -12,12 +12,14 @@ Without the immune response, though, no number of chemotherapy treatments protec
 Our full model succesfully kills cancer after the last treatment, but the immune system component of the model remains a weak point. 
 The immune system model on its own performs poorly in the long term.
 It experiences discontinuities and negative cell populations after only 30 days.
-When integrated into our full model, immune response kills all cancer cells after chemotherapy regardless of tumor size.
-Thus, our immune system equations create unrealistically optimistic results.
+Initial conditions also highly affect results of the immune model.
+When we include the immune system in our full model, we mitigate a lot of negative consequences by inhibiting immune cells with chemotherapy.
+However, our immune system equations still contribute to our model's sensitivity to inital conditions.
+The sensitivity of our immune equations also casts doubt on whether our model accurately predicts the death of cancer cells after chemotherapy.
 
-Another weakness of our model is the large number of parameters.
+Another weakness of our model is the uncertainty of our parameters.
 Most of these parameters were found experimentally, but with different experiments under varying assumptions.
-Moreover, when we introduced a parameter to our final model to ihibit immune response based chemotherapy dosage, we simply chose a value which produced convincing qualitative results.
+Moreover, when we introduced a parameter to our final model to ihibit immune response due to chemotherapy, we simply chose a value which produced convincing qualitative results.
 Fully inspecting and adjusting our parameters would be difficult, but would make our model more quantitatively correct.
 
 Several simplifying assumptions also weaken our model. 
@@ -30,6 +32,6 @@ Typically, chemotherapy only inihibts immune cells, but since we model immune ce
 
 If our model accurately predicted tumor burden, it might be useful to prescribe chemotherapy treatments to breast cancer patients. 
 Given initial measurements of tumor burden and immune cells, doctors could verify whether a patient is in remission. 
-However, currently, our model does not predict negative outcomes well. 
+However, currently, our model does not predict results without chemotherapy well.
 If our model is to be useful, it needs to accurately predict tumor burden in the absence of chemotherapy or after treatment.
-Given more time, we might improve the model to accurately predict bad outcomes without sufficient treatment.
+Given more time, we might improve the model to accurately predict outcomes given insufficient treatment.
