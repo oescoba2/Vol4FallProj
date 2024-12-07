@@ -2,8 +2,7 @@
 
 Our model demonstrates that ODEs are a promising way to model breast cancer growth.
 The predicted effect specifically of chemotherapy is appealing. 
-However, our model predicts chemotherapy and immune response together will wipe out a tumor of nearly any size.
-Hence, our model produces unrealistically optimistic results, which our immune response model mainly contributed too.
+
 
 When we examine the parts of our model, the most promising is the model of chemotherapy alone. 
 Our model predicts, as a expected, that a single round of chemotherapy strongly weakens a tumor in the first few days before the tumor rebounds. 
@@ -12,8 +11,8 @@ Without the immune response, though, no number of chemotherapy treatments protec
 Our full model succesfully kills cancer after the last treatment, but the immune system component of the model remains a weak point. 
 The immune system model on its own performs poorly in the long term.
 It experiences discontinuities and negative cell populations after only 30 days.
-Initial conditions also highly affect results of the immune model.
-When we include the immune system in our full model, we mitigate a lot of negative consequences by inhibiting immune cells with chemotherapy.
+Initial conditions also highly affect the results of the immune model.
+When we integrate the immune system into our full model, we mitigate a lot of negative consequences by inhibiting immune cells with chemotherapy.
 However, our immune system equations still contribute to our model's sensitivity to inital conditions.
 The sensitivity of our immune equations also casts doubt on whether our model accurately predicts the death of cancer cells after chemotherapy.
 
@@ -31,7 +30,7 @@ Finally, our full model includes a term which indicates that chemotherapy kills 
 Typically, chemotherapy only inihibts immune cells, but since we model immune cell population, that information is hard to incorporate.
 
 If our model accurately predicted tumor burden, it might be useful to prescribe chemotherapy treatments to breast cancer patients. 
-Given initial measurements of tumor burden and immune cells, doctors could verify whether a patient is in remission. 
+Given initial measurements of tumor burden and immune cells, doctors could predict whether a patient is in remission and corroborate the patient's symptoms with the tumor growth model. 
 However, currently, our model does not predict results without chemotherapy well.
-If our model is to be useful, it needs to accurately predict tumor burden in the absence of chemotherapy or after treatment.
-Given more time, we might improve the model to accurately predict outcomes given insufficient treatment.
+If our model is to be useful, it needs to accurately predict tumor burden in the absence of chemotherapy or after chemotherapy treatments.
+Given more time, we might futher inspect whether the model accurately predicts outcomes given insufficient treatment and alter our parameters.
